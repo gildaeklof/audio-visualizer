@@ -1,10 +1,10 @@
-import Visualizer from './Components/Visualizer';
-import './App.css';
+import Visualiser from "./Visuals/Visualiser";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Visualizer />
+      <Visualiser />
     </div>
   );
 }
