@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import Movement from "../Movement";
-import "../Visualiser/visualiser.css";
+import Background from "../Background/index";
+import "./style.css";
 
 function nearestPow2(aSize) {
   return Math.pow(2, Math.ceil(Math.log(aSize) / Math.log(2)));
 }
 
-const Visualiser = () => {
+const Visualizer = () => {
   const [ready, setReady] = useState(false);
   const playerOptions = useRef({
     playing: false,
@@ -69,7 +69,30 @@ const Visualiser = () => {
     <>
       <header>
         <button
-          class="replay"
+          class="play"
+          onClick={() => {
+            if (!playerOptions.current.playing) play();
+            playerOptions.current.pausedAt = {
+              playing: false,
+              pausedAt: 0,
+              playedAt: 0,
+            };
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            fill="currentColor"
+            class="bi bi-play"
+            viewBox="1 1 12 12"
+          >
+            <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" />
+          </svg>
+        </button>
+
+        <button
+          class="pause"
           onClick={() => {
             if (playerOptions.current.playing) play();
             playerOptions.current = {
@@ -77,11 +100,20 @@ const Visualiser = () => {
               pausedAt: 0,
               playedAt: 0,
             };
-            play();
           }}
         >
-          Replay song
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            fill="currentColor"
+            class="bi bi-pause"
+            viewBox="2 1 12 12"
+          >
+            <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z" />
+          </svg>
         </button>
+
         <select
           class="songs"
           onChange={(e) => {
@@ -104,10 +136,10 @@ const Visualiser = () => {
           <option value={16} defaultChecked>
             16
           </option>
+          <option value={20}>20</option>
+          <option value={24}>24</option>
+          <option value={28}>28</option>
           <option value={32}>32</option>
-          <option value={64}>64</option>
-          <option value={128}>128</option>
-          <option value={256}>256</option>
         </select>
       </header>
       <Canvas
@@ -120,9 +152,11 @@ const Visualiser = () => {
           width: "100%",
           height: "100%",
         }}
-        camera={{ position: [0, -2, 3] }}
       >
-        <OrbitControls /* autoRotate={true} autoRotateSpeed={5} */ />
+        {/* zooms in */}
+        <OrbitControls
+        //autoRotate={true} autoRotateSpeed={1}
+        />
         <ambientLight />
         <pointLight position={[0, 0, 20]} color={0xff0000} />
         <pointLight position={[-20, 0, 20]} color={0x00ff00} />
@@ -133,7 +167,7 @@ const Visualiser = () => {
           color={0xff0000}
         />
         {ready && (
-          <Movement
+          <Background
             num={num}
             analyser={analyser.current}
             player={playerOptions}
@@ -145,4 +179,4 @@ const Visualiser = () => {
   );
 };
 
-export default Visualiser;
+export default Visualizer;

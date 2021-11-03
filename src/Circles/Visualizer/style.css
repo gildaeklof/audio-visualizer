@@ -6,7 +6,8 @@ header {
   transform: translateX(-50%);
   z-index: 100;
 }
-.replay,
+.play,
+.pause,
 .songs,
 .numbers {
   border: none;
@@ -16,6 +17,7 @@ header {
   font-size: 1.1em;
   background-color: rgba(255, 255, 255, 0.8);
 }
+.pause,
 .songs,
 .numbers {
   margin-left: 20px;

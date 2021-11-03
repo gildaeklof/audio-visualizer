@@ -1,10 +1,10 @@
-import Visualiser from "./Visuals/Visualiser";
+import Visualizer from "./Circles/Visualizer";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Visualiser />
+      <Visualizer />
     </div>
   );
 }

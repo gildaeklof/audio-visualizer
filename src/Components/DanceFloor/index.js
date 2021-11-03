@@ -1,8 +1,8 @@
-import React, { useRef, useState, createContext } from 'react';
-import { useFrame } from '@react-three/fiber';
-import { DoubleSide, BackSide } from 'three';
-import Dancer from '../Dancer';
-import { MeshWobbleMaterial } from '@react-three/drei';
+import React, { useRef, useState, createContext } from "react";
+import { useFrame } from "@react-three/fiber";
+import { DoubleSide, BackSide } from "three";
+import Dancer from "../Dancer";
+import { MeshWobbleMaterial } from "@react-three/drei";
 
 const makeDancers = (num) => {
   const dancers = [];
