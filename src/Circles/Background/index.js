@@ -1,16 +1,23 @@
-import React, { useRef, useState, createContext } from "react";
-import { useFrame } from "@react-three/fiber";
-import { BackSide } from "three";
-import Figures from "../Figures";
+import React, { useRef, useState, createContext } from 'react';
+import { useFrame } from '@react-three/fiber';
+import { BackSide } from 'three';
+import Figures from '../Figures';
+import Spheres from '../Spheres';
 
 const makeFigures = (num) => {
   const figures = [];
   for (let i = 0; i < num; i++) {
-    figures.push(
-      <Figures key={`danc${figures.length}`} index={figures.length} />
-    );
+    figures.push(<Figures key={figures.length} index={figures.length} />);
   }
   return figures;
+};
+
+const makeSpheres = (num) => {
+  const spheres = [];
+  for (let i = 10; i < num; i++) {
+    spheres.push(<Spheres key={spheres.length} index={spheres.length} />);
+  }
+  return spheres;
 };
 
 export const soundContext = createContext();
@@ -40,6 +47,7 @@ const Background = ({ num, analyser, player, play, ...rest }) => {
 
       <soundContext.Provider value={soundArray}>
         {makeFigures(num)}
+        {makeSpheres(num)}
       </soundContext.Provider>
     </mesh>
   );
