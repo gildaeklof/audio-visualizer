@@ -3,6 +3,7 @@ import { useFrame } from '@react-three/fiber';
 import { BackSide } from 'three';
 import Figures from '../Figures';
 import Spheres from '../Spheres';
+import Boxes from '../Boxes';
 
 const makeFigures = (num) => {
   const figures = [];
@@ -18,6 +19,14 @@ const makeSpheres = (num) => {
     spheres.push(<Spheres key={spheres.length} index={spheres.length} />);
   }
   return spheres;
+};
+
+const makeBoxes = (num) => {
+  const boxes = [];
+  for (let i = 0; i < num; i++) {
+    boxes.push(<Boxes key={boxes.length} index={boxes.length} />);
+  }
+  return boxes;
 };
 
 export const soundContext = createContext();
@@ -48,6 +57,7 @@ const Background = ({ num, analyser, player, play, ...rest }) => {
       <soundContext.Provider value={soundArray}>
         {makeFigures(num)}
         {makeSpheres(num)}
+        {/* {makeBoxes(num)} */}
       </soundContext.Provider>
     </mesh>
   );

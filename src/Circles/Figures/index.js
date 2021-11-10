@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { soundContext } from '../Background/index';
 import { DoubleSide } from 'three';
-import { MeshWobbleMaterial } from '@react-three/drei';
+import { MeshWobbleMaterial, MeshDistortMaterial } from '@react-three/drei';
 
 const Figures = ({ index }) => {
   // distance between lines
@@ -17,7 +17,7 @@ const Figures = ({ index }) => {
         attach="material"
         // Changes how many colors there are
         // 100%=color 50%=lightness
-        color={`hsl(${height * 100}, 80%, 60%)`}
+        color={`hsl(${height * 100}, 60%, 60%)`}
         side={DoubleSide}
       />
     </mesh>

@@ -8,22 +8,22 @@ import {
   OrbitControls,
 } from '@react-three/drei';
 
-const Spheres = ({ index }) => {
+const Boxes = ({ index }) => {
   // distance between lines
-  const height = useContext(soundContext)[index] / 150;
+  const height = useContext(soundContext)[index] / 100;
   return (
     // centers the mesh
     <mesh position={[0, 0, Math.min(0, height)]}>
-      <sphereBufferGeometry attach="geometry" args={[100, 50, 100]} />
+      <sphereBufferGeometry attach="geometry" args={[20, 5, 200]} />
       <meshToonMaterial
         attach="material"
         // Changes how many colors there are
         // 100%=color 50%=lightness
-        color={`hsl(${height * 200}, 100%, 50%)`}
-        side={DoubleSide}
+        color={`hsl(${height * 500}, 100%, 50%)`}
+        /* side={DoubleSide} */
       />
     </mesh>
   );
 };
 
-export default Spheres;
+export default Boxes;
