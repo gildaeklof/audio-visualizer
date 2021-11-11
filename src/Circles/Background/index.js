@@ -1,32 +1,34 @@
 import React, { useRef, useState, createContext } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { BackSide } from 'three';
-import Figures from '../Figures';
-import Spheres from '../Spheres';
-import Boxes from '../Boxes';
+import Rings from '../Rings';
+import Particles from '../Particles';
+import Sphere from '../Sphere';
 
-const makeFigures = (num) => {
-  const figures = [];
+const makeRings = (num) => {
+  const rings = [];
   for (let i = 0; i < num; i++) {
-    figures.push(<Figures key={figures.length} index={figures.length} />);
+    rings.push(<Rings key={rings.length} index={rings.length} />);
   }
-  return figures;
+  return rings;
 };
 
-const makeSpheres = (num) => {
-  const spheres = [];
+const makeParticles = (num) => {
+  const particles = [];
   for (let i = 10; i < num; i++) {
-    spheres.push(<Spheres key={spheres.length} index={spheres.length} />);
+    particles.push(
+      <Particles key={particles.length} index={particles.length} />
+    );
   }
-  return spheres;
+  return particles;
 };
 
-const makeBoxes = (num) => {
-  const boxes = [];
+const makeSphere = (num) => {
+  const sphere = [];
   for (let i = 0; i < num; i++) {
-    boxes.push(<Boxes key={boxes.length} index={boxes.length} />);
+    sphere.push(<Sphere key={sphere.length} index={sphere.length} />);
   }
-  return boxes;
+  return sphere;
 };
 
 export const soundContext = createContext();
@@ -55,9 +57,9 @@ const Background = ({ num, analyser, player, play, ...rest }) => {
       />
 
       <soundContext.Provider value={soundArray}>
-        {makeFigures(num)}
-        {makeSpheres(num)}
-        {/* {makeBoxes(num)} */}
+        {makeRings(num)}
+        {makeParticles(num)}
+        {makeSphere(num)}
       </soundContext.Provider>
     </mesh>
   );

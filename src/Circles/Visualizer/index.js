@@ -157,8 +157,8 @@ const Visualizer = () => {
         {/* zooms in */}
         <OrbitControls
           maxDistance={80}
-          autoRotate={true}
-          autoRotateSpeed={0.5}
+          /* autoRotate={true}
+          autoRotateSpeed={0.5} */
         />
         <ambientLight />
         <pointLight position={[0, 0, 20]} color={0xff0000} />
