@@ -69,7 +69,7 @@ const Visualizer = () => {
     <>
       <header>
         <button
-          class="play"
+          className="play"
           onClick={() => {
             if (!playerOptions.current.playing) play();
             playerOptions.current.pausedAt = {
@@ -84,7 +84,7 @@ const Visualizer = () => {
             width="18"
             height="18"
             fill="currentColor"
-            class="bi bi-play"
+            className="bi bi-play"
             viewBox="1 1 12 12"
           >
             <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" />
@@ -92,7 +92,7 @@ const Visualizer = () => {
         </button>
 
         <button
-          class="pause"
+          className="pause"
           onClick={() => {
             if (playerOptions.current.playing) play();
             playerOptions.current = {
@@ -107,7 +107,7 @@ const Visualizer = () => {
             width="18"
             height="18"
             fill="currentColor"
-            class="bi bi-pause"
+            className="bi bi-pause"
             viewBox="2 1 12 12"
           >
             <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z" />
@@ -115,7 +115,7 @@ const Visualizer = () => {
         </button>
 
         <select
-          class="songs"
+          className="songs"
           onChange={(e) => {
             setTrack(e.target.value);
           }}
@@ -128,7 +128,7 @@ const Visualizer = () => {
           <option value="face">Face</option>
         </select>
         <select
-          class="numbers"
+          className="numbers"
           onChange={(e) => {
             setNum(e.target.value);
           }}
