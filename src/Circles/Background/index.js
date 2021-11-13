@@ -1,9 +1,9 @@
-import React, { useRef, useState, createContext } from 'react';
-import { useFrame } from '@react-three/fiber';
-import { BackSide } from 'three';
-import Rings from '../Rings';
-import Particles from '../Particles';
-import Sphere from '../Sphere';
+import React, { useRef, useState, createContext } from "react";
+import { useFrame } from "@react-three/fiber";
+import { BackSide } from "three";
+import Rings from "../Rings";
+import Particles from "../Particles";
+import Sphere from "../Sphere";
 
 const makeRings = (num) => {
   const rings = [];
@@ -23,13 +23,13 @@ const makeParticles = (num) => {
   return particles;
 };
 
-const makeSphere = (num) => {
-  const sphere = [];
-  for (let i = 0; i < num; i++) {
-    sphere.push(<Sphere key={sphere.length} index={sphere.length} />);
-  }
-  return sphere;
-};
+// const makeSphere = (num) => {
+//   const sphere = [];
+//   for (let i = 0; i < num; i++) {
+//     sphere.push(<Sphere key={sphere.length} index={sphere.length} />);
+//   }
+//   return sphere;
+// };
 
 export const soundContext = createContext();
 
@@ -59,7 +59,7 @@ const Background = ({ num, analyser, player, play, ...rest }) => {
       <soundContext.Provider value={soundArray}>
         {makeRings(num)}
         {makeParticles(num)}
-        {makeSphere(num)}
+        {/* {makeSphere(num)} */}
       </soundContext.Provider>
     </mesh>
   );

@@ -1,5 +1,6 @@
 import Visualizer from "./Circles/Visualizer";
 import "./App.css";
+// import { Effects } from "./Effects";
 
 function App() {
   return (
