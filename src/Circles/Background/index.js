@@ -1,9 +1,8 @@
-import React, { useRef, useState, createContext } from "react";
-import { useFrame } from "@react-three/fiber";
-import { BackSide } from "three";
-import Rings from "../Rings";
-import Particles from "../Particles";
-import Sphere from "../Sphere";
+import React, { useRef, useState, createContext } from 'react';
+import { useFrame } from '@react-three/fiber';
+import Rings from '../Rings';
+import Particles from '../Particles';
+import Spheres from '../Spheres';
 
 const makeRings = (num) => {
   const rings = [];
@@ -21,6 +20,31 @@ const makeParticles = (num) => {
     );
   }
   return particles;
+};
+
+const makeSpheres = (num) => {
+  const spheres = [];
+  let increase = (Math.PI * 2) / num;
+  let angle = Math.PI / 2;
+
+  for (let i = 0; i < num; i++) {
+    let x = 5 * Math.cos(angle);
+    let y = 5 * Math.sin(angle);
+
+    let id = i < num / 10 ? i : num - i;
+    spheres.push(
+      <Spheres
+        key={spheres.length}
+        position={[x, y, 0]}
+        radius={0.5}
+        angle={angle}
+        id={id}
+        index={spheres.length}
+      />
+    );
+    angle += increase;
+  }
+  return spheres;
 };
 
 // const makeSphere = (num) => {
@@ -46,20 +70,18 @@ const Background = ({ num, analyser, player, play, ...rest }) => {
 
   return (
     <mesh ref={mesh} position={[0, 0, 0]} rotation={[0, 0, 0]} {...rest}>
-      {/* args={[size of background]} */}
-      <sphereBufferGeometry attach="geometry" args={[100]} />
+      {/* <sphereBufferGeometry attach="geometry" args={[100]} />
       <meshBasicMaterial
         attach="material"
         //Changes the background
         // + 100=hue 100%=background saturation 50%=lightness
         color={`hsl(0, 0%, 10%)`}
         side={BackSide}
-      />
-
+      /> */}
       <soundContext.Provider value={soundArray}>
-        {makeRings(num)}
+        {/* {makeRings(num)} */}
         {makeParticles(num)}
-        {/* {makeSphere(num)} */}
+        {makeSpheres(num)}
       </soundContext.Provider>
     </mesh>
   );
