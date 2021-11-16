@@ -1,24 +1,34 @@
-header {
-  color: black;
+.controls {
   position: absolute;
   top: 20px;
-  left: 50%;
+  right: 82%;
+  width: 150px;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+header {
+  position: absolute;
+  top: 20px;
+  right: 50%;
   transform: translateX(-50%);
   z-index: 100;
 }
 .play,
 .pause,
 .songs,
-.numbers {
+.numbers,
+.controls {
+  color: rgb(255, 255, 255);
   border: none;
   padding: 1rem;
   border-radius: 1rem;
   cursor: pointer;
   font-size: 1.1em;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(34, 34, 34, 0.8);
 }
 .pause,
 .songs,
-.numbers {
+.numbers,
+.play {
   margin-left: 20px;
 }

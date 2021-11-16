@@ -65,83 +65,91 @@ const Visualizer = () => {
     }
     return (playerOptions.current.playing = !playerOptions.current.playing);
   }, []);
+
+  const [visible, setVisible] = useState(false);
+
   return (
     <>
-      <header>
-        <button
-          className="play"
-          onClick={() => {
-            if (!playerOptions.current.playing) play();
-            playerOptions.current.pausedAt = {
-              playing: false,
-              pausedAt: 0,
-              playedAt: 0,
-            };
-          }}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            fill="currentColor"
-            className="bi bi-play"
-            viewBox="1 1 12 12"
+      <button className="controls" onClick={() => setVisible(!visible)}>
+        {visible ? 'Hide controls' : 'Show controls'}
+      </button>
+      {visible && (
+        <header>
+          <button
+            className="play"
+            onClick={() => {
+              if (!playerOptions.current.playing) play();
+              playerOptions.current.pausedAt = {
+                playing: false,
+                pausedAt: 0,
+                playedAt: 0,
+              };
+            }}
           >
-            <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" />
-          </svg>
-        </button>
-
-        <button
-          className="pause"
-          onClick={() => {
-            if (playerOptions.current.playing) play();
-            playerOptions.current = {
-              playing: false,
-              pausedAt: 0,
-              playedAt: 0,
-            };
-          }}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            fill="currentColor"
-            className="bi bi-pause"
-            viewBox="2 1 12 12"
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              fill="currentColor"
+              className="bi bi-play"
+              viewBox="1 1 12 12"
+            >
+              <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" />
+            </svg>
+          </button>
+          <button
+            className="pause"
+            onClick={() => {
+              if (playerOptions.current.playing) play();
+              playerOptions.current = {
+                playing: false,
+                pausedAt: 0,
+                playedAt: 0,
+              };
+            }}
           >
-            <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z" />
-          </svg>
-        </button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              fill="currentColor"
+              className="bi bi-pause"
+              viewBox="2 1 12 12"
+            >
+              <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z" />
+            </svg>
+          </button>
 
-        <select
-          className="songs"
-          onChange={(e) => {
-            setTrack(e.target.value);
-          }}
-        >
-          <option value="disco" defaultChecked>
-            Disco
-          </option>
-          <option value="studio">Studio</option>
-          <option value="riviere">Riviere</option>
-          <option value="face">Face</option>
-        </select>
-        <select
-          className="numbers"
-          onChange={(e) => {
-            setNum(e.target.value);
-          }}
-        >
-          <option value={16} defaultChecked>
-            16
-          </option>
-          <option value={20}>20</option>
-          <option value={24}>24</option>
-          <option value={28}>28</option>
-          <option value={32}>32</option>
-        </select>
-      </header>
+          <select
+            className="songs"
+            onChange={(e) => {
+              setTrack(e.target.value);
+            }}
+          >
+            <option value="disco" defaultChecked>
+              Disco
+            </option>
+            <option value="studio">Studio</option>
+            <option value="riviere">Riviere</option>
+            <option value="face">Face</option>
+          </select>
+          <select
+            className="numbers"
+            onChange={(e) => {
+              setNum(e.target.value);
+            }}
+          >
+            <option value={16} defaultChecked>
+              16
+            </option>
+            <option value={20}>20</option>
+            <option value={24}>24</option>
+            <option value={28}>28</option>
+            <option value={32}>32</option>
+          </select>
+        </header>
+      )}
+
       <Canvas
         pixelRatio={window.devicePixelRatio}
         invalidateFrameloop={false}
