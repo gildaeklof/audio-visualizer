@@ -48,13 +48,13 @@ const makeSpheres = (num) => {
   return spheres;
 };
 
-// const makeSphere = (num) => {
-//   const sphere = [];
-//   for (let i = 0; i < num; i++) {
-//     sphere.push(<Sphere key={sphere.length} index={sphere.length} />);
-//   }
-//   return sphere;
-// };
+/* const makeSphere = (num) => {
+  const sphere = [];
+  for (let i = 0; i < num; i++) {
+    sphere.push(<Sphere key={sphere.length} index={sphere.length} />);
+  }
+  return sphere;
+}; */
 
 export const soundContext = createContext();
 
@@ -80,9 +80,10 @@ const Background = ({ num, analyser, player, play, ...rest }) => {
         side={BackSide}
       />
       <soundContext.Provider value={soundArray}>
-        {makeRings(num)}
+        {/* {makeRings(num)} */}
         {makeParticles(num)}
-        {/* {makeSpheres(num)} */}
+        {makeSpheres(num)}
+        {/* {makeSphere(num)} */}
       </soundContext.Provider>
     </mesh>
   );

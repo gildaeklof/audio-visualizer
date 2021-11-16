@@ -1,9 +1,17 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { DoubleSide } from 'three';
+import { useFrame } from '@react-three/fiber';
+import { soundContext } from '../Background/index';
+import { MeshWobbleMaterial, MeshDistortMaterial } from '@react-three/drei';
 
-const Spheres = (props) => {
+const Spheres = ({ position, index }) => {
+  const height = useContext(soundContext)[index] / 100;
   const mesh = useRef();
-  const colorMap = () => {
+  /* useFrame(({ clock }) => {
+    const a = Math.sin(clock.getElapsedTime());
+    mesh.current.rotation.y = a;
+  }); */
+  /* const colorMap = () => {
     let r, g, b;
     r = parseInt((Math.sin(props.angle - Math.PI) + 1) * 128);
     g = parseInt(
@@ -13,14 +21,15 @@ const Spheres = (props) => {
       (Math.sin(props.angle - Math.PI - (2 * Math.PI) / 3) + 1) * 128
     );
     return `rgb(${r}, ${g}, ${b})`;
-  };
+  }; */
 
   return (
-    <mesh position={props.position} ref={mesh}>
+    <mesh position={position} ref={mesh}>
       <sphereBufferGeometry attach="geometry" args={[0.5, 20, 20]} />
-      <meshPhongMaterial
+      <meshBasicMaterial
         attach="material"
-        color={colorMap()}
+        /* color={colorMap()} */
+        color={`hsl(${height * 128}, 80%, 60%)`}
         side={DoubleSide}
       />
     </mesh>

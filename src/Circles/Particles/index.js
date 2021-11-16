@@ -1,12 +1,18 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef } from 'react';
 import { soundContext } from '../Background/index';
 import { DoubleSide } from 'three';
 import { MeshWobbleMaterial, MeshDistortMaterial } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 
 const Particles = ({ index }) => {
   const height = useContext(soundContext)[index] / 200;
+  const mesh = useRef();
+  /* useFrame(({ clock }) => {
+    const a = clock.getElapsedTime();
+    mesh.current.rotation.x = a;
+  }); */
   return (
-    <mesh position={[0, 0, Math.tan(0, height)]}>
+    <mesh position={[0, 0, Math.tan(0, height)]} ref={mesh}>
       <sphereBufferGeometry attach="geometry" args={[100, 50, 500]} />
       <meshPhysicalMaterial
         attach="material"
