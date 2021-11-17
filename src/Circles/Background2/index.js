@@ -1,31 +1,43 @@
 import React, { useRef, useState, createContext } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { BackSide } from 'three';
-import Rings from '../Rings';
-import Particles from '../Particles';
-/* import Spheres from '../Spheres'; */
+import Spheres from '../Spheres';
+import Stars from '../Stars';
 
-const makeRings = (num) => {
-  const rings = [];
-  for (let i = 0; i < num; i++) {
-    rings.push(<Rings key={rings.length} index={rings.length} />);
-  }
-  return rings;
+const makeStars = () => {
+  const stars = [];
+  stars.push(<Stars key={stars.length} index={stars.length} />);
+  return stars;
 };
 
-const makeParticles = (num) => {
-  const particles = [];
-  for (let i = 10; i < num; i++) {
-    particles.push(
-      <Particles key={particles.length} index={particles.length} />
+const makeSpheres = (num) => {
+  const spheres = [];
+  let increase = (Math.PI * 2) / num;
+  let angle = Math.PI / 2;
+
+  for (let i = 0; i < num; i++) {
+    let x = 5 * Math.cos(angle);
+    let y = 5 * Math.sin(angle);
+
+    let id = i < num / num ? i : num - i;
+    spheres.push(
+      <Spheres
+        key={spheres.length}
+        position={[x, y, 0]}
+        radius={0.5}
+        angle={angle}
+        /* id={id} */
+        index={id}
+      />
     );
+    angle += increase;
   }
-  return particles;
+  return spheres;
 };
 
 export const soundContext = createContext();
 
-const Background = ({ num, analyser, player, play, ...rest }) => {
+const Background2 = ({ num, analyser, player, play, ...rest }) => {
   const mesh = useRef();
   const [soundArray, setSoundArray] = useState(() => Array(num).fill(0));
 
@@ -44,12 +56,13 @@ const Background = ({ num, analyser, player, play, ...rest }) => {
         color={`hsl(0, 0%, 10%)`}
         side={BackSide}
       />
+
       <soundContext.Provider value={soundArray}>
-        {makeRings(num)}
-        {makeParticles(num)}
+        {makeStars()}
+        {makeSpheres(num)}
       </soundContext.Provider>
     </mesh>
   );
 };
 
-export default Background;
+export default Background2;

@@ -9,7 +9,7 @@
 header {
   position: absolute;
   top: 20px;
-  right: 50%;
+  right: 27%;
   transform: translateX(-50%);
   z-index: 100;
 }
@@ -17,7 +17,9 @@ header {
 .pause,
 .songs,
 .numbers,
-.controls {
+.controls,
+.rings,
+.spheres {
   color: rgb(255, 255, 255);
   border: none;
   padding: 1rem;
@@ -26,9 +28,15 @@ header {
   font-size: 1.1em;
   background-color: rgba(34, 34, 34, 0.8);
 }
+.songs:focus,
+.numbers:focus {
+  outline: none;
+}
 .pause,
 .songs,
 .numbers,
-.play {
+.play,
+.rings,
+.spheres {
   margin-left: 20px;
 }

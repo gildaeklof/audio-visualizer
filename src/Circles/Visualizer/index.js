@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import Background from '../Background/index';
+import Background2 from '../Background2/index';
 import './style.css';
 
 function nearestPow2(aSize) {
@@ -66,7 +67,8 @@ const Visualizer = () => {
     return (playerOptions.current.playing = !playerOptions.current.playing);
   }, []);
 
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [animation, setAnimation] = useState(false);
 
   return (
     <>
@@ -147,6 +149,8 @@ const Visualizer = () => {
             <option value={28}>28</option>
             <option value={32}>32</option>
           </select>
+          <button className="rings">Rings</button>
+          <button className="spheres">Spheres</button>
         </header>
       )}
 
@@ -162,10 +166,9 @@ const Visualizer = () => {
         }}
         camera={{ position: [0, 0, 10] }}
       >
-        {/* zooms in */}
         <OrbitControls
-        /* maxDistance={80} */
-        /* autoRotate={true}
+          maxDistance={80}
+          /* autoRotate={true}
           autoRotateSpeed={0.5} */
         />
         <ambientLight />
@@ -178,7 +181,7 @@ const Visualizer = () => {
           color={0xff0000}
         />
         {ready && (
-          <Background
+          <Background2
             num={num}
             analyser={analyser.current}
             player={playerOptions}
