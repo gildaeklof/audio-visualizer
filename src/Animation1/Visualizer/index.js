@@ -1,10 +1,9 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import Background from "../Background/index";
-import Background2 from "../Background2/index";
-import { Post } from "../Post/index";
-import "./style.css";
+import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { Link } from 'react-router-dom';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import Background from '../Background/index';
+import { Post } from '../Post/index';
 
 function nearestPow2(aSize) {
   return Math.pow(2, Math.ceil(Math.log(aSize) / Math.log(2)));
@@ -18,7 +17,7 @@ const Visualizer = () => {
     playedAt: 0,
   });
   const [num, setNum] = useState(16);
-  const [track, setTrack] = useState("disco");
+  const [track, setTrack] = useState('disco');
   const audioContext = useRef(
     new (window.AudioContext || window.webkitAudioContext)()
   );
@@ -31,7 +30,7 @@ const Visualizer = () => {
   }, [num]);
 
   useEffect(() => {
-    fetch(track + ".mp3").then((res) => {
+    fetch(track + '.mp3').then((res) => {
       res.arrayBuffer().then((value) => {
         audioContext.current.decodeAudioData(value).then((audioBuffer) => {
           currentBuffer.current = audioBuffer;
@@ -69,12 +68,11 @@ const Visualizer = () => {
   }, []);
 
   const [visible, setVisible] = useState(true);
-  const [animation, setAnimation] = useState(false);
 
   return (
     <>
       <button className="controls" onClick={() => setVisible(!visible)}>
-        {visible ? "Hide controls" : "Show controls"}
+        {visible ? 'Hide controls' : 'Show controls'}
       </button>
       {visible && (
         <header>
@@ -150,8 +148,12 @@ const Visualizer = () => {
             <option value={28}>28</option>
             <option value={32}>32</option>
           </select>
-          <button className="rings">Rings</button>
-          <button className="spheres">Spheres</button>
+          <Link to="/">
+            <button className="spheres">Rings</button>
+          </Link>
+          <Link to="/spheres">
+            <button className="rings">Spheres</button>
+          </Link>
         </header>
       )}
 
@@ -159,11 +161,11 @@ const Visualizer = () => {
         pixelRatio={window.devicePixelRatio}
         invalidateFrameloop={false}
         style={{
-          position: "absolute",
-          left: "0",
-          top: "0",
-          width: "100%",
-          height: "100%",
+          position: 'absolute',
+          left: '0',
+          top: '0',
+          width: '100%',
+          height: '100%',
         }}
         camera={{ position: [0, 0, 10] }}
       >
@@ -182,7 +184,7 @@ const Visualizer = () => {
           color={0xff0000}
         />
         {ready && (
-          <Background2
+          <Background
             num={num}
             analyser={analyser.current}
             player={playerOptions}

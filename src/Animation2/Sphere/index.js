@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { soundContext } from "../Background/index";
-import "../../Honeycomb/NewMaterial";
-import NewMaterial from "../../Honeycomb/NewMaterial";
+import React, { useContext } from 'react';
+import { soundContext } from '../Background2/index';
+import '../../Honeycomb/NewMaterial';
+import NewMaterial from '../../Honeycomb/NewMaterial';
 
 const Sphere = ({ index }) => {
   // distance between lines

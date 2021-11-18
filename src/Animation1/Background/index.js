@@ -3,7 +3,6 @@ import { useFrame } from '@react-three/fiber';
 import { BackSide } from 'three';
 import Rings from '../Rings';
 import Particles from '../Particles';
-/* import Spheres from '../Spheres'; */
 
 const makeRings = (num) => {
   const rings = [];
