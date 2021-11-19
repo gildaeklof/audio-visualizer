@@ -1,6 +1,7 @@
 import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import { Post } from '../../Animation1/Post/index';
 
 const Stars = () => {
   let group = useRef();
@@ -30,6 +31,7 @@ const Stars = () => {
       {coords.map(([p1, p2, p3], i) => (
         <mesh key={i} geometry={geo} material={mat} position={[p1, p2, p3]} />
       ))}
+      <Post />
     </group>
   );
 };
