@@ -2,7 +2,8 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import Background2 from "../Background2/index";
+import Background4 from "../Background4/index";
+import { Post } from "../Post";
 function nearestPow2(aSize) {
   return Math.pow(2, Math.ceil(Math.log(aSize) / Math.log(2)));
 }
@@ -150,11 +151,11 @@ const Visualizer = () => {
           <Link to="/">
             <button className="rings">Rings</button>
           </Link>
-          <Link to="/test">
-            <button className="rings">Test</button>
+          <Link to="/spheres">
+            <button className="spheres">Spheres</button>
           </Link>
-          <Link to="/lines">
-            <button className="rings">Lines</button>
+          <Link to="/test">
+            <button className="spheres">Test</button>
           </Link>
         </header>
       )}
@@ -169,7 +170,7 @@ const Visualizer = () => {
           width: "100%",
           height: "100%",
         }}
-        camera={{ position: [0, 0, 10] }}
+        camera={{ position: [2, 0, 10] }}
       >
         <OrbitControls
           maxDistance={80}
@@ -186,13 +187,14 @@ const Visualizer = () => {
           color={0xff0000}
         />
         {ready && (
-          <Background2
+          <Background4
             num={num}
             analyser={analyser.current}
             player={playerOptions}
             play={play}
           />
         )}
+        <Post />
       </Canvas>
     </>
   );

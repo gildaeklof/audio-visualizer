@@ -20,17 +20,18 @@ export function Post() {
   return (
     <EffectComposer>
       <DepthOfField
-        focusDistance={1}
-        focalLength={2}
+        focusDistance={0}
+        focalLength={0.02}
         bokehScale={1}
         height={900}
       />
       <Bloom
         luminanceThreshold={0}
-        luminanceSmoothing={3}
-        height={1000}
-        opacity={5}
+        luminanceSmoothing={1}
+        height={900}
+        opacity={3}
       />
+      <Noise opacity={0.1} />
       <Vignette eskil={false} offset={0.1} darkness={1.1} />
     </EffectComposer>
   );

@@ -1,30 +1,37 @@
 import React, { useRef, useState, createContext } from "react";
 import { useFrame } from "@react-three/fiber";
 import { BackSide } from "three";
-import Rings from "../Rings";
-import Particles from "../Particles";
+import Shapes from "../Shapes";
 
-const makeRings = (num) => {
-  const rings = [];
+const makeShapes = (num) => {
+  const shapes = [];
+  let increase = (Math.PI * 2) / num;
+  let angle = Math.PI / 2;
+
+  // Angle of shape
   for (let i = 0; i < num; i++) {
-    rings.push(<Rings key={rings.length} index={rings.length} />);
-  }
-  return rings;
-};
+    let x = 0 * Math.cos(angle);
+    let y = 0 * Math.sin(angle);
+    let z = 1 * Math.sin(angle);
 
-const makeParticles = (num) => {
-  const particles = [];
-  for (let i = 10; i < num; i++) {
-    particles.push(
-      <Particles key={particles.length} index={particles.length} />
+    let id = i < num / num ? i : num - i;
+    shapes.push(
+      <Shapes
+        key={shapes.length}
+        position={[x, y, z, 0]}
+        radius={0.5}
+        angle={angle}
+        index={id}
+      />
     );
+    angle += increase;
   }
-  return particles;
+  return shapes;
 };
 
 export const soundContext = createContext();
 
-const Background = ({ num, analyser, player, play, ...rest }) => {
+const Background3 = ({ num, analyser, player, play, ...rest }) => {
   const mesh = useRef();
   const [soundArray, setSoundArray] = useState(() => Array(num).fill(0));
 
@@ -43,12 +50,12 @@ const Background = ({ num, analyser, player, play, ...rest }) => {
         color={`hsl(0, 0%, 10%)`}
         side={BackSide}
       />
+
       <soundContext.Provider value={soundArray}>
-        {makeRings(num)}
-        {makeParticles(num)}
+        {makeShapes(num)}
       </soundContext.Provider>
     </mesh>
   );
 };
 
-export default Background;
+export default Background3;

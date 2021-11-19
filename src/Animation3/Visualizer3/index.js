@@ -1,13 +1,14 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import Background2 from "../Background2/index";
+import Background3 from "../Background3/index";
+import { Post } from "../Post";
+
 function nearestPow2(aSize) {
   return Math.pow(2, Math.ceil(Math.log(aSize) / Math.log(2)));
 }
 
-const Visualizer = () => {
+const Visualizer3 = () => {
   const [ready, setReady] = useState(false);
   const playerOptions = useRef({
     playing: false,
@@ -150,11 +151,11 @@ const Visualizer = () => {
           <Link to="/">
             <button className="rings">Rings</button>
           </Link>
-          <Link to="/test">
-            <button className="rings">Test</button>
+          <Link to="/spheres">
+            <button className="spheres">Spheres</button>
           </Link>
           <Link to="/lines">
-            <button className="rings">Lines</button>
+            <button className="spheres">Lines</button>
           </Link>
         </header>
       )}
@@ -169,13 +170,9 @@ const Visualizer = () => {
           width: "100%",
           height: "100%",
         }}
-        camera={{ position: [0, 0, 10] }}
+        // camera={{ position: [0, 0, 0.1] }}
+        camera={{ position: [0, 0, 0.1] }}
       >
-        <OrbitControls
-          maxDistance={80}
-          /* autoRotate={true}
-          autoRotateSpeed={0.5} */
-        />
         <ambientLight />
         <pointLight position={[0, 0, 20]} color={0xff0000} />
         <pointLight position={[-20, 0, 20]} color={0x00ff00} />
@@ -186,16 +183,17 @@ const Visualizer = () => {
           color={0xff0000}
         />
         {ready && (
-          <Background2
+          <Background3
             num={num}
             analyser={analyser.current}
             player={playerOptions}
             play={play}
           />
         )}
+        <Post />
       </Canvas>
     </>
   );
 };
 
-export default Visualizer;
+export default Visualizer3;
