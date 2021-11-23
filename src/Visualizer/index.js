@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
-import Background from '../Animation1/Background/index';
-import Background2 from '../Animation2/Background2';
-import Background3 from '../Animation3/Background3';
-import Background4 from '../Animation4/Background4';
-import { Post } from '../Animation1/Post/index';
+import Background from '../Rings/Background/index';
+import Background2 from '../Spheres/Background2';
+import Background3 from '../Shapes/Background3';
+import Background4 from '../Lines/Background4';
+import { Post } from '../Rings/Post/index';
 
 function nearestPow2(aSize) {
   return Math.pow(2, Math.ceil(Math.log(aSize) / Math.log(2)));
@@ -130,8 +130,8 @@ const Visualizer = () => {
             <option value="disco" defaultChecked>
               Disco
             </option>
-            <option value="orchid">Orchid</option>
             <option value="riviere">Riviere</option>
+            <option value="orchid">Orchid</option>
             <option value="cover">Cover</option>
           </select>
           <select
@@ -156,7 +156,7 @@ const Visualizer = () => {
               Rings
             </option>
             <option value="spheres">Spheres</option>
-            <option value="test">Test</option>
+            <option value="shapes">Shapes</option>
             <option value="lines">Lines</option>
           </select>
         </header>
@@ -175,9 +175,9 @@ const Visualizer = () => {
         camera={{ position: [0, 0, 10] }}
       >
         <OrbitControls
-        /* maxDistance={80} */
-        /* autoRotate={true}
-          autoRotateSpeed={0.5} */
+          /* maxDistance={80} */
+          autoRotate={true}
+          autoRotateSpeed={0.7}
         />
         {/* <CameraShake intensity={0.1} /> */}
         <ambientLight />
@@ -205,7 +205,7 @@ const Visualizer = () => {
             play={play}
           />
         )}
-        {background === 'test' && (
+        {background === 'shapes' && (
           <Background3
             num={num}
             analyser={analyser.current}

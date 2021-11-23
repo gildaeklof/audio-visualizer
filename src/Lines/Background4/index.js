@@ -1,43 +1,34 @@
 import React, { useRef, useState, createContext } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { BackSide } from 'three';
-import Spheres from '../Spheres';
-import Stars from '../Stars';
+import Lines from '../Lines';
 
-const makeStars = () => {
-  const stars = [];
-  stars.push(<Stars key={stars.length} index={stars.length} />);
-  return stars;
-};
-
-const makeSpheres = (num) => {
-  const spheres = [];
-  let increase = (Math.PI * 2) / num;
-  let angle = Math.PI / 2;
+const makeLines = (num) => {
+  const lines = [];
+  let increase = 1.5 / num;
+  let angle = 1;
 
   for (let i = 0; i < num; i++) {
-    let x = 5 * Math.cos(angle);
-    let y = 5 * Math.sin(angle);
-
+    let x = 30 * Math.cos(angle);
+    let y = 0 * Math.cos(angle);
     let id = i < num / num ? i : num - i;
-    spheres.push(
-      <Spheres
-        key={spheres.length}
+    lines.push(
+      <Lines
+        key={lines.length}
         position={[x, y, 0]}
         radius={0.5}
         angle={angle}
-        /* id={id} */
         index={id}
       />
     );
     angle += increase;
   }
-  return spheres;
+  return lines;
 };
 
 export const soundContext = createContext();
 
-const Background2 = ({ num, analyser, player, play, ...rest }) => {
+const Background4 = ({ num, analyser, player, play, ...rest }) => {
   const mesh = useRef();
   const [soundArray, setSoundArray] = useState(() => Array(num).fill(0));
 
@@ -49,7 +40,7 @@ const Background2 = ({ num, analyser, player, play, ...rest }) => {
   });
 
   return (
-    <mesh ref={mesh} position={[0, 0, 0]} rotation={[0, 0, 0]} {...rest}>
+    <mesh ref={mesh} position={[-2, 0, -10]} rotation={[0, 0, 0]} {...rest}>
       <sphereBufferGeometry attach="geometry" args={[100]} />
       <meshBasicMaterial
         attach="material"
@@ -58,11 +49,10 @@ const Background2 = ({ num, analyser, player, play, ...rest }) => {
       />
 
       <soundContext.Provider value={soundArray}>
-        {makeStars()}
-        {makeSpheres(num)}
+        {makeLines(num)}
       </soundContext.Provider>
     </mesh>
   );
 };
 
-export default Background2;
+export default Background4;

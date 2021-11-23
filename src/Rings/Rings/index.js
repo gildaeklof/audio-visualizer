@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from 'react';
-import { soundContext } from '../../Animation1/Background/index';
+import { soundContext } from '../Background/index';
 import { DoubleSide } from 'three';
 import { MeshWobbleMaterial, MeshDistortMaterial } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
