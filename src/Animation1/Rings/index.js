@@ -1,8 +1,8 @@
-import React, { useContext, useRef } from "react";
-import { soundContext } from "../../Animation1/Background/index";
-import { DoubleSide } from "three";
-import { MeshWobbleMaterial, MeshDistortMaterial } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import React, { useContext, useRef } from 'react';
+import { soundContext } from '../../Animation1/Background/index';
+import { DoubleSide } from 'three';
+import { MeshWobbleMaterial, MeshDistortMaterial } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 
 const Rings = ({ index }) => {
   const height = useContext(soundContext)[index] / 100;

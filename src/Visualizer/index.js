@@ -1,9 +1,12 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import { Link } from "react-router-dom";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import Background4 from "../Background4/index";
-import { Post } from "../Post";
+import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import Background from '../Animation1/Background/index';
+import Background2 from '../Animation2/Background2';
+import Background3 from '../Animation3/Background3';
+import Background4 from '../Animation4/Background4';
+/* import { Post } from '..//Post/index'; */
+
 function nearestPow2(aSize) {
   return Math.pow(2, Math.ceil(Math.log(aSize) / Math.log(2)));
 }
@@ -16,7 +19,8 @@ const Visualizer = () => {
     playedAt: 0,
   });
   const [num, setNum] = useState(16);
-  const [track, setTrack] = useState("disco");
+  const [track, setTrack] = useState('disco');
+  const [background, setBackground] = useState('rings');
   const audioContext = useRef(
     new (window.AudioContext || window.webkitAudioContext)()
   );
@@ -29,7 +33,7 @@ const Visualizer = () => {
   }, [num]);
 
   useEffect(() => {
-    fetch(track + ".mp3").then((res) => {
+    fetch(track + '.mp3').then((res) => {
       res.arrayBuffer().then((value) => {
         audioContext.current.decodeAudioData(value).then((audioBuffer) => {
           currentBuffer.current = audioBuffer;
@@ -67,17 +71,15 @@ const Visualizer = () => {
   }, []);
 
   const [visible, setVisible] = useState(true);
-  const [animation, setAnimation] = useState(false);
 
   return (
     <>
       <button className="controls" onClick={() => setVisible(!visible)}>
-        {visible ? "Hide controls" : "Show controls"}
+        {visible ? 'Hide controls' : 'Show controls'}
       </button>
       {visible && (
         <header>
           <button
-            className="play"
             onClick={() => {
               if (!playerOptions.current.playing) play();
               playerOptions.current.pausedAt = {
@@ -99,7 +101,6 @@ const Visualizer = () => {
             </svg>
           </button>
           <button
-            className="pause"
             onClick={() => {
               if (playerOptions.current.playing) play();
               playerOptions.current = {
@@ -122,7 +123,6 @@ const Visualizer = () => {
           </button>
 
           <select
-            className="songs"
             onChange={(e) => {
               setTrack(e.target.value);
             }}
@@ -135,7 +135,6 @@ const Visualizer = () => {
             <option value="face">Face</option>
           </select>
           <select
-            className="numbers"
             onChange={(e) => {
               setNum(e.target.value);
             }}
@@ -148,15 +147,18 @@ const Visualizer = () => {
             <option value={28}>28</option>
             <option value={32}>32</option>
           </select>
-          <Link to="/">
-            <button className="rings">Rings</button>
-          </Link>
-          <Link to="/spheres">
-            <button className="spheres">Spheres</button>
-          </Link>
-          <Link to="/test">
-            <button className="spheres">Test</button>
-          </Link>
+          <select
+            onChange={(e) => {
+              setBackground(e.target.value);
+            }}
+          >
+            <option value="rings" defaultChecked>
+              Rings
+            </option>
+            <option value="spheres">Spheres</option>
+            <option value="test">Test</option>
+            <option value="lines">Lines</option>
+          </select>
         </header>
       )}
 
@@ -164,19 +166,20 @@ const Visualizer = () => {
         pixelRatio={window.devicePixelRatio}
         invalidateFrameloop={false}
         style={{
-          position: "absolute",
-          left: "0",
-          top: "0",
-          width: "100%",
-          height: "100%",
+          position: 'absolute',
+          left: '0',
+          top: '0',
+          width: '100%',
+          height: '100%',
         }}
-        camera={{ position: [2, 0, 10] }}
+        camera={{ position: [0, 0, 10] }}
       >
         <OrbitControls
-          maxDistance={80}
-          /* autoRotate={true}
+        /* maxDistance={80} */
+        /* autoRotate={true}
           autoRotateSpeed={0.5} */
         />
+        {/* <CameraShake intensity={0.1} /> */}
         <ambientLight />
         <pointLight position={[0, 0, 20]} color={0xff0000} />
         <pointLight position={[-20, 0, 20]} color={0x00ff00} />
@@ -186,7 +189,31 @@ const Visualizer = () => {
           lookAt={[4, 4, 4]}
           color={0xff0000}
         />
-        {ready && (
+        {background === 'rings' && (
+          <Background
+            num={num}
+            analyser={analyser.current}
+            player={playerOptions}
+            play={play}
+          />
+        )}
+        {background === 'spheres' && (
+          <Background2
+            num={num}
+            analyser={analyser.current}
+            player={playerOptions}
+            play={play}
+          />
+        )}
+        {background === 'test' && (
+          <Background3
+            num={num}
+            analyser={analyser.current}
+            player={playerOptions}
+            play={play}
+          />
+        )}
+        {background === 'lines' && (
           <Background4
             num={num}
             analyser={analyser.current}
@@ -194,7 +221,7 @@ const Visualizer = () => {
             play={play}
           />
         )}
-        <Post />
+        {/* <Post /> */}
       </Canvas>
     </>
   );

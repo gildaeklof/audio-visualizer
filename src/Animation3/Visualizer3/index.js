@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import { Link } from "react-router-dom";
-import { Canvas } from "@react-three/fiber";
-import Background3 from "../Background3/index";
-import { Post } from "../Post";
+import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { Canvas } from '@react-three/fiber';
+import Background3 from '../Background3/index';
+import { Post } from '../Post';
+import { OrbitControls } from '@react-three/drei';
 
 function nearestPow2(aSize) {
   return Math.pow(2, Math.ceil(Math.log(aSize) / Math.log(2)));
@@ -16,7 +16,7 @@ const Visualizer3 = () => {
     playedAt: 0,
   });
   const [num, setNum] = useState(16);
-  const [track, setTrack] = useState("disco");
+  const [track, setTrack] = useState('disco');
   const audioContext = useRef(
     new (window.AudioContext || window.webkitAudioContext)()
   );
@@ -29,7 +29,7 @@ const Visualizer3 = () => {
   }, [num]);
 
   useEffect(() => {
-    fetch(track + ".mp3").then((res) => {
+    fetch(track + '.mp3').then((res) => {
       res.arrayBuffer().then((value) => {
         audioContext.current.decodeAudioData(value).then((audioBuffer) => {
           currentBuffer.current = audioBuffer;
@@ -67,12 +67,11 @@ const Visualizer3 = () => {
   }, []);
 
   const [visible, setVisible] = useState(true);
-  const [animation, setAnimation] = useState(false);
 
   return (
     <>
       <button className="controls" onClick={() => setVisible(!visible)}>
-        {visible ? "Hide controls" : "Show controls"}
+        {visible ? 'Hide controls' : 'Show controls'}
       </button>
       {visible && (
         <header>
@@ -148,15 +147,6 @@ const Visualizer3 = () => {
             <option value={28}>28</option>
             <option value={32}>32</option>
           </select>
-          <Link to="/">
-            <button className="rings">Rings</button>
-          </Link>
-          <Link to="/spheres">
-            <button className="spheres">Spheres</button>
-          </Link>
-          <Link to="/lines">
-            <button className="spheres">Lines</button>
-          </Link>
         </header>
       )}
 
@@ -164,11 +154,11 @@ const Visualizer3 = () => {
         pixelRatio={window.devicePixelRatio}
         invalidateFrameloop={false}
         style={{
-          position: "absolute",
-          left: "0",
-          top: "0",
-          width: "100%",
-          height: "100%",
+          position: 'absolute',
+          left: '0',
+          top: '0',
+          width: '100%',
+          height: '100%',
         }}
         // camera={{ position: [0, 0, 0.1] }}
         camera={{ position: [0, 0, 0.1] }}
@@ -190,7 +180,7 @@ const Visualizer3 = () => {
             play={play}
           />
         )}
-        <Post />
+        {/* <Post /> */}
       </Canvas>
     </>
   );

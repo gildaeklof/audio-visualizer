@@ -31,7 +31,6 @@ const Stars = () => {
       {coords.map(([p1, p2, p3], i) => (
         <mesh key={i} geometry={geo} material={mat} position={[p1, p2, p3]} />
       ))}
-      <Post />
     </group>
   );
 };

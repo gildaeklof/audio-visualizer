@@ -8,11 +8,6 @@ body {
   background-color: black;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 .controls {
   position: absolute;
   top: 20px;
@@ -24,34 +19,24 @@ code {
 header {
   position: absolute;
   top: 20px;
-  right: 27%;
+  right: 33%;
   transform: translateX(-50%);
   z-index: 100;
 }
-.play,
-.pause,
-.songs,
-.numbers,
+button,
 .controls,
-.rings,
-.spheres {
+select {
   color: rgb(255, 255, 255);
-  border: none;
-  padding: 1rem;
+  border: 1rem solid rgba(34, 34, 34, 0.8);
   border-radius: 1rem;
   cursor: pointer;
   font-size: 1.1em;
   background-color: rgba(34, 34, 34, 0.8);
 }
-.songs:focus,
-.numbers:focus {
+select:focus {
   outline: none;
 }
-.pause,
-.songs,
-.numbers,
-.play,
-.rings,
-.spheres {
+button,
+select {
   margin-left: 20px;
 }

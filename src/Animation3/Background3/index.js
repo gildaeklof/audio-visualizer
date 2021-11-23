@@ -1,7 +1,7 @@
-import React, { useRef, useState, createContext } from "react";
-import { useFrame } from "@react-three/fiber";
-import { BackSide } from "three";
-import Shapes from "../Shapes";
+import React, { useRef, useState, createContext } from 'react';
+import { useFrame } from '@react-three/fiber';
+import { BackSide } from 'three';
+import Shapes from '../Shapes';
 
 const makeShapes = (num) => {
   const shapes = [];
@@ -43,7 +43,7 @@ const Background3 = ({ num, analyser, player, play, ...rest }) => {
   });
 
   return (
-    <mesh ref={mesh} position={[0, 0, 0]} rotation={[0, 0, 0]} {...rest}>
+    <mesh ref={mesh} position={[0, 0, 11]} rotation={[0, 0, 0]} {...rest}>
       <sphereBufferGeometry attach="geometry" args={[100]} />
       <meshBasicMaterial
         attach="material"
