@@ -9,7 +9,7 @@ function nearestPow2(aSize) {
 }
 
 const Visualizer3 = () => {
-  const [ready, setReady] = useState(false);
+  /* const [ready, setReady] = useState(false); */
   const playerOptions = useRef({
     playing: false,
     pausedAt: 0,
@@ -33,7 +33,7 @@ const Visualizer3 = () => {
       res.arrayBuffer().then((value) => {
         audioContext.current.decodeAudioData(value).then((audioBuffer) => {
           currentBuffer.current = audioBuffer;
-          setReady(true);
+          /* setReady(true); */
         });
       });
     });

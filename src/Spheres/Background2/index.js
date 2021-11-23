@@ -4,6 +4,7 @@ import { BackSide } from 'three';
 import Spheres from '../Spheres';
 import Sphere from '../Sphere';
 import Stars from '../Stars';
+import { Post } from '../../Rings/Post';
 
 const makeStars = () => {
   const stars = [];
@@ -69,6 +70,7 @@ const Background2 = ({ num, analyser, player, play, ...rest }) => {
         {makeSpheres(num)}
         {makeSphere()}
       </soundContext.Provider>
+      {/*  <Post /> */}
     </mesh>
   );
 };

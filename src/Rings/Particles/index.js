@@ -1,8 +1,5 @@
 import React, { useContext, useRef } from 'react';
 import { soundContext } from '../Background/index';
-import { DoubleSide } from 'three';
-import { MeshWobbleMaterial, MeshDistortMaterial } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
 
 const Particles = ({ index }) => {
   const height = useContext(soundContext)[index] / 200;

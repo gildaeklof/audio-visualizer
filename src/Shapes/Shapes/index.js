@@ -1,6 +1,6 @@
-import React, { useContext, useRef, useEffect } from "react";
-import { DoubleSide } from "three";
-import { soundContext } from "../Background3/index";
+import React, { useContext, useRef } from 'react';
+import { DoubleSide } from 'three';
+import { soundContext } from '../Background3/index';
 
 const Shapes = ({ position, angle, index }) => {
   const height = useContext(soundContext)[index] / 100;
@@ -16,7 +16,7 @@ const Shapes = ({ position, angle, index }) => {
 
   return (
     <>
-      <mesh position={position} /* ref={mesh} */>
+      <mesh position={position} ref={mesh}>
         <torusBufferGeometry
           attach="geometry"
           args={[height / 7, 1, 50]}

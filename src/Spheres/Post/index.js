@@ -4,7 +4,6 @@ import {
   EffectComposer,
   DepthOfField,
   Bloom,
-  Noise,
   Vignette,
 } from '@react-three/postprocessing';
 
@@ -12,7 +11,6 @@ extend({
   EffectComposer,
   DepthOfField,
   Bloom,
-  Noise,
   Vignette,
 });
 
@@ -28,7 +26,7 @@ export function Post() {
       <Bloom
         luminanceThreshold={0}
         luminanceSmoothing={5}
-        height={1000}
+        height={10000}
         opacity={5}
       />
       <Vignette eskil={false} offset={0.1} darkness={1.1} />
