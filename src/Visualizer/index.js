@@ -5,7 +5,7 @@ import Background from '../Animation1/Background/index';
 import Background2 from '../Animation2/Background2';
 import Background3 from '../Animation3/Background3';
 import Background4 from '../Animation4/Background4';
-/* import { Post } from '..//Post/index'; */
+import { Post } from '../Animation1/Post/index';
 
 function nearestPow2(aSize) {
   return Math.pow(2, Math.ceil(Math.log(aSize) / Math.log(2)));
@@ -130,9 +130,9 @@ const Visualizer = () => {
             <option value="disco" defaultChecked>
               Disco
             </option>
-            <option value="studio">Studio</option>
+            <option value="orchid">Orchid</option>
             <option value="riviere">Riviere</option>
-            <option value="face">Face</option>
+            <option value="cover">Cover</option>
           </select>
           <select
             onChange={(e) => {

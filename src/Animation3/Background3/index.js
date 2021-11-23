@@ -5,8 +5,8 @@ import Shapes from '../Shapes';
 
 const makeShapes = (num) => {
   const shapes = [];
-  let increase = (Math.PI * 2) / num;
-  let angle = Math.PI / 2;
+  let increase = (Math.PI * 3) / num;
+  let angle = Math.PI / 1;
 
   // Angle of shape
   for (let i = 0; i < num; i++) {
