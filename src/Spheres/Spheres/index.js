@@ -1,6 +1,6 @@
-import React, { useContext, useRef } from 'react';
-import { DoubleSide } from 'three';
-import { soundContext } from '../Background2/index';
+import React, { useContext, useRef } from "react";
+import { DoubleSide } from "three";
+import { soundContext } from "../Background2/index";
 
 const Spheres = ({ position, angle, index }) => {
   const height = useContext(soundContext)[index] / 100;

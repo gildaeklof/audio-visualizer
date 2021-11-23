@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
-import Background from '../Rings/Background/index';
-import Background2 from '../Spheres/Background2';
-import Background3 from '../Shapes/Background3';
-import Background4 from '../Lines/Background4';
-import { Post } from '../Rings/Post/index';
+import React, { useEffect, useState, useRef, useCallback } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import Background from "../Rings/Background/index";
+import Background2 from "../Spheres/Background2";
+import Background4 from "../Lines/Background4";
+// import { Post } from "../Post/index";
 
 function nearestPow2(aSize) {
   return Math.pow(2, Math.ceil(Math.log(aSize) / Math.log(2)));
@@ -18,8 +17,8 @@ const Visualizer = () => {
     playedAt: 0,
   });
   const [num, setNum] = useState(16);
-  const [track, setTrack] = useState('disco');
-  const [background, setBackground] = useState('rings');
+  const [track, setTrack] = useState("disco");
+  const [background, setBackground] = useState("rings");
   const audioContext = useRef(
     new (window.AudioContext || window.webkitAudioContext)()
   );
@@ -32,7 +31,7 @@ const Visualizer = () => {
   }, [num]);
 
   useEffect(() => {
-    fetch(track + '.mp3').then((res) => {
+    fetch(track + ".mp3").then((res) => {
       res.arrayBuffer().then((value) => {
         audioContext.current.decodeAudioData(value).then((audioBuffer) => {
           currentBuffer.current = audioBuffer;
@@ -73,7 +72,7 @@ const Visualizer = () => {
   return (
     <>
       <button className="controls" onClick={() => setVisible(!visible)}>
-        {visible ? 'Hide controls' : 'Show controls'}
+        {visible ? "Hide controls" : "Show controls"}
       </button>
       {visible && (
         <header>
@@ -154,7 +153,6 @@ const Visualizer = () => {
               Rings
             </option>
             <option value="spheres">Spheres</option>
-            <option value="shapes">Shapes</option>
             <option value="lines">Lines</option>
           </select>
         </header>
@@ -164,20 +162,14 @@ const Visualizer = () => {
         pixelRatio={window.devicePixelRatio}
         invalidateFrameloop={false}
         style={{
-          position: 'absolute',
-          left: '0',
-          top: '0',
-          width: '100%',
-          height: '100%',
+          position: "absolute",
+          left: "0",
+          top: "0",
+          width: "100%",
+          height: "100%",
         }}
         camera={{ position: [0, 0, 10] }}
       >
-        <OrbitControls
-          /* maxDistance={80} */
-          autoRotate={true}
-          autoRotateSpeed={0.7}
-        />
-        {/* <CameraShake intensity={0.1} /> */}
         <ambientLight />
         <pointLight position={[0, 0, 20]} color={0xff0000} />
         <pointLight position={[-20, 0, 20]} color={0x00ff00} />
@@ -187,37 +179,42 @@ const Visualizer = () => {
           lookAt={[4, 4, 4]}
           color={0xff0000}
         />
-        {background === 'rings' && (
-          <Background
-            num={num}
-            analyser={analyser.current}
-            player={playerOptions}
-            play={play}
-          />
+        {background === "rings" && (
+          <>
+            <OrbitControls maxDistance={80} />
+            <Background
+              num={num}
+              analyser={analyser.current}
+              player={playerOptions}
+              play={play}
+            />
+          </>
         )}
-        {background === 'spheres' && (
-          <Background2
-            num={num}
-            analyser={analyser.current}
-            player={playerOptions}
-            play={play}
-          />
+        {background === "spheres" && (
+          <>
+            <OrbitControls
+              maxDistance={80}
+              autoRotate={true}
+              autoRotateSpeed={0.7}
+            />
+            <Background2
+              num={num}
+              analyser={analyser.current}
+              player={playerOptions}
+              play={play}
+            />
+          </>
         )}
-        {background === 'shapes' && (
-          <Background3
-            num={num}
-            analyser={analyser.current}
-            player={playerOptions}
-            play={play}
-          />
-        )}
-        {background === 'lines' && (
-          <Background4
-            num={num}
-            analyser={analyser.current}
-            player={playerOptions}
-            play={play}
-          />
+        {background === "lines" && (
+          <>
+            <OrbitControls maxDistance={80} />
+            <Background4
+              num={num}
+              analyser={analyser.current}
+              player={playerOptions}
+              play={play}
+            />
+          </>
         )}
         {/* <Post /> */}
       </Canvas>

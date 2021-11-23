@@ -1,10 +1,10 @@
-import React, { useRef, useState, createContext } from 'react';
-import { useFrame } from '@react-three/fiber';
-import { BackSide } from 'three';
-import Spheres from '../Spheres';
-import Sphere from '../Sphere';
-import Stars from '../Stars';
-import { Post } from '../../Rings/Post';
+import React, { useRef, useState, createContext } from "react";
+import { useFrame } from "@react-three/fiber";
+import { BackSide } from "three";
+import Spheres from "../Spheres";
+import Sphere from "../Sphere";
+import Stars from "../Stars";
+import { Post } from "../../Rings/Post";
 
 const makeStars = () => {
   const stars = [];

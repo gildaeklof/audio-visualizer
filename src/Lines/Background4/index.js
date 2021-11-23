@@ -1,12 +1,12 @@
-import React, { useRef, useState, createContext } from 'react';
-import { useFrame } from '@react-three/fiber';
-import { BackSide } from 'three';
-import Lines from '../Lines';
+import React, { useRef, useState, createContext } from "react";
+import { useFrame } from "@react-three/fiber";
+import { BackSide } from "three";
+import Lines from "../Lines";
 
 const makeLines = (num) => {
   const lines = [];
   let increase = 1.5 / num;
-  let angle = 1;
+  let angle = 10;
 
   for (let i = 0; i < num; i++) {
     let x = 30 * Math.cos(angle);
@@ -40,11 +40,12 @@ const Background4 = ({ num, analyser, player, play, ...rest }) => {
   });
 
   return (
-    <mesh ref={mesh} position={[-2, 0, -10]} rotation={[0, 0, 0]} {...rest}>
-      <sphereBufferGeometry attach="geometry" args={[100]} />
+    <mesh ref={mesh} position={[7, 0, -20]} rotation={[0, 0, 0]} {...rest}>
+      <sphereBufferGeometry attach="geometry" args={[40, 40, 40]} />
+
       <meshBasicMaterial
         attach="material"
-        color={`hsl(0, 0%, 10%)`}
+        color={`hsl(000, 100%, 1%)`}
         side={BackSide}
       />
 
