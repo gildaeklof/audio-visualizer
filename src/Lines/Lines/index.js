@@ -1,6 +1,6 @@
-import React, { useContext, useRef } from "react";
-import { DoubleSide } from "three";
-import { soundContext } from "../Background4/index";
+import React, { useContext, useRef } from 'react';
+import { DoubleSide } from 'three';
+import { soundContext } from '../Background4/index';
 
 const Lines = ({ position, angle, index }) => {
   const height = useContext(soundContext)[index] / 30;

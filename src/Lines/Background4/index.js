@@ -2,6 +2,8 @@ import React, { useRef, useState, createContext } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { BackSide } from 'three';
 import Lines from '../Lines';
+/* import Sphere from '../Sphere'; */
+import { Stars } from '@react-three/drei';
 
 const makeLines = (num) => {
   const lines = [];
@@ -41,16 +43,24 @@ const Background4 = ({ num, analyser, player, play, ...rest }) => {
 
   return (
     <mesh ref={mesh} position={[0, 0, -20]} rotation={[0, 0, 0]} {...rest}>
-      <sphereBufferGeometry attach="geometry" args={[40, 40, 40]} />
+      {/* <sphereBufferGeometry attach="geometry" args={[40, 40, 40]} />
 
       <meshBasicMaterial
         attach="material"
         color={`hsl(000, 100%, 1%)`}
         side={BackSide}
+      /> */}
+      <Stars
+        radius={100}
+        depth={50}
+        count={5000}
+        factor={4}
+        saturation={0}
+        fade
       />
-
       <soundContext.Provider value={soundArray}>
         {makeLines(num)}
+        {/* <Sphere /> */}
       </soundContext.Provider>
     </mesh>
   );
