@@ -1,31 +1,30 @@
 import React, { useRef, useState, createContext } from "react";
 import { useFrame } from "@react-three/fiber";
 import { BackSide } from "three";
-import Lines from "../Lines";
-/* import Sphere from '../Sphere'; */
-import { Stars } from "@react-three/drei";
+import Spheres from "../Spheres";
 
-const makeLines = (num) => {
-  const lines = [];
-  let increase = 2 / num;
-  let angle = 10;
+const makeSpheres = (num) => {
+  const spheres = [];
+  let increase = 1.5 / num;
+  let angle = 1;
 
   for (let i = 0; i < num; i++) {
     let x = 30 * Math.cos(angle);
     let y = 0 * Math.cos(angle);
-    let id = i > num / num ? i : num + i;
-    lines.push(
-      <Lines
-        key={lines.length}
+    let id = i < num / num ? i : num - i;
+    spheres.push(
+      <Spheres
+        key={spheres.length}
         position={[x, y, 0]}
         radius={0.5}
         angle={angle}
+        /* id={id} */
         index={id}
       />
     );
     angle += increase;
   }
-  return lines;
+  return spheres;
 };
 
 export const soundContext = createContext();
@@ -42,18 +41,16 @@ const Background4 = ({ num, analyser, player, play, ...rest }) => {
   });
 
   return (
-    <mesh ref={mesh} position={[0, 0, -20]} rotation={[0, 0, 0]} {...rest}>
-      <Stars
-        radius={1}
-        depth={50}
-        count={5000}
-        factor={1}
-        saturation={0}
-        fade
+    <mesh ref={mesh} position={[2, 0, -10]} rotation={[0, 0, 0]} {...rest}>
+      <sphereBufferGeometry attach="geometry" args={[100]} />
+      <meshBasicMaterial
+        attach="material"
+        color={`hsl(0, 0%, 10%)`}
+        side={BackSide}
       />
+
       <soundContext.Provider value={soundArray}>
-        {makeLines(num)}
-        {/* <Sphere /> */}
+        {makeSpheres(num)}
       </soundContext.Provider>
     </mesh>
   );

@@ -1,7 +1,7 @@
-import React, { useRef, useState, createContext } from 'react';
-import { useFrame } from '@react-three/fiber';
-import Heart from '../Heart';
-import { BackSide } from 'three';
+import React, { useRef, useState, createContext } from "react";
+import { useFrame } from "@react-three/fiber";
+import Heart from "../Heart";
+import { BackSide } from "three";
 
 const makeHearts = (num) => {
   const hearts = [];
@@ -25,7 +25,7 @@ const Background3 = ({ num, analyser, player, play, ...rest }) => {
   });
 
   return (
-    <mesh ref={mesh} position={[0, 0, -20]} rotation={[0, 0, 0]} {...rest}>
+    <mesh ref={mesh} position={[0, 0, 0]} rotation={[0, 0, 0]} {...rest}>
       {/* <sphereBufferGeometry attach="geometry" args={[40, 40, 40]} />
 
       <meshBasicMaterial
@@ -33,6 +33,7 @@ const Background3 = ({ num, analyser, player, play, ...rest }) => {
         color={`hsl( 100%, 1%)`}
         side={BackSide}
       /> */}
+
       <soundContext.Provider value={soundArray}>
         <Heart />
         {/* {makeHearts(num)} */}
