@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import Background from '../Rings/Background/index';
 import Background2 from '../Spheres/Background2';
+import Background3 from '../Heart/Background3';
 import Background4 from '../Lines/Background4';
 import { Post } from '../Post/index';
 
@@ -154,6 +155,7 @@ const Visualizer = () => {
             </option>
             <option value="lines">Lines</option>
             <option value="spheres">Spheres</option>
+            <option value="heart">Heart</option>
           </select>
         </header>
       )}
@@ -209,6 +211,17 @@ const Visualizer = () => {
           <>
             <OrbitControls maxDistance={80} />
             <Background4
+              num={num}
+              analyser={analyser.current}
+              player={playerOptions}
+              play={play}
+            />
+          </>
+        )}
+        {background === 'heart' && (
+          <>
+            <OrbitControls maxDistance={80} />
+            <Background3
               num={num}
               analyser={analyser.current}
               player={playerOptions}
