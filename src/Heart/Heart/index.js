@@ -1,8 +1,6 @@
-import React, { useContext } from 'react';
-import * as THREE from 'three';
-import { soundContext } from '../Background3';
-import { DoubleSide } from 'three';
-import { MeshWobbleMaterial } from '@react-three/drei';
+import React, { useContext } from "react";
+import * as THREE from "three";
+import { soundContext } from "../Background3";
 
 const Heart = () => {
   const height = useContext(soundContext)[3] / 80;
@@ -26,12 +24,6 @@ const Heart = () => {
         attach="material"
         color={`hsl(${height * 128}, 100%, 55%)`}
       />
-      {/* <meshPhongMaterial
-        attach="material"
-        color={`hsl(${height * 50}, 80%, 20%)`}
-       
-        side={DoubleSide}
-      /> */}
     </mesh>
   );
 };

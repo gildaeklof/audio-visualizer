@@ -5,7 +5,7 @@ import Background from "../Rings/Background/index";
 import Background2 from "../Spheres/Background2";
 import Background3 from "../Heart/Background3";
 import Background4 from "../Lines/Background4";
-import Background5 from "../New/Background5";
+import Background5 from "../Honeycomb/Background5";
 import { Post } from "../Post/index";
 
 function nearestPow2(aSize) {
@@ -157,7 +157,7 @@ const Visualizer = () => {
             <option value="lines">Lines</option>
             <option value="spheres">Spheres</option>
             <option value="heart">Heart</option>
-            <option value="new">New</option>
+            <option value="honeycomb">Honeycomb</option>
           </select>
         </header>
       )}
@@ -231,7 +231,7 @@ const Visualizer = () => {
             />
           </>
         )}
-        {background === "new" && (
+        {background === "honeycomb" && (
           <>
             <OrbitControls maxDistance={80} />
             <Background5
