@@ -1,10 +1,10 @@
-import React, { useRef, useState, createContext } from "react";
-import { useFrame } from "@react-three/fiber";
-import { BackSide } from "three";
-import Spheres from "../Spheres";
-import Sphere from "../Sphere";
-import Stars from "../Stars";
-import { Post } from "../../Rings/Post";
+import React, { useRef, useState, createContext } from 'react';
+import { useFrame } from '@react-three/fiber';
+import { BackSide } from 'three';
+import Spheres from '../Spheres';
+import Sphere from '../Sphere';
+import Stars from '../Stars';
+/* import { Post } from "../../Rings/Post"; */
 
 const makeStars = () => {
   const stars = [];
@@ -37,12 +37,6 @@ const makeSpheres = (num) => {
   return spheres;
 };
 
-const makeSphere = () => {
-  const sphere = [];
-  sphere.push(<Sphere key={sphere.length} index={sphere.length} />);
-  return sphere;
-};
-
 export const soundContext = createContext();
 
 const Background2 = ({ num, analyser, player, play, ...rest }) => {
@@ -68,7 +62,7 @@ const Background2 = ({ num, analyser, player, play, ...rest }) => {
       <soundContext.Provider value={soundArray}>
         {makeStars()}
         {makeSpheres(num)}
-        {makeSphere()}
+        <Sphere />
       </soundContext.Provider>
       {/*  <Post /> */}
     </mesh>

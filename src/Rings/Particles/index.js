@@ -1,14 +1,14 @@
-import React, { useContext, useRef } from "react";
-import { soundContext } from "../Background/index";
+import React, { useContext, useRef } from 'react';
+import { soundContext } from '../Background/index';
 
 const Particles = ({ index }) => {
-  const height = useContext(soundContext)[index] / 200;
+  const height = useContext(soundContext)[index] / 100;
   const mesh = useRef();
   const colorMap = () => {
     let r, g, b;
-    r = parseInt((Math.sin(height - Math.PI) + 1) * 1280);
-    g = parseInt((Math.sin(height - Math.PI - (4 * Math.PI) / 3) + 1) * 600);
-    b = parseInt((Math.sin(height - Math.PI - (2 * Math.PI) / 3) + 1) * 100);
+    r = parseInt((Math.sin(height - Math.PI) + 1) * 100);
+    g = parseInt((Math.sin(height - Math.PI - (4 * Math.PI) / 20) + 1) * 600);
+    b = parseInt((Math.sin(height - Math.PI - (2 * Math.PI) / 20) + 1) * 1280);
     return `rgb(${r}, ${g}, ${b})`;
   };
   return (
@@ -16,7 +16,7 @@ const Particles = ({ index }) => {
       <sphereBufferGeometry attach="geometry" args={[100, 50, 500]} />
       <meshPhysicalMaterial
         attach="material"
-        // color={`hsl(${height * 200}, 100%, 50%)`}
+        /* color={`hsl(${height * 200}, 100%, 50%)`} */
         color={colorMap()}
         side={1}
       />

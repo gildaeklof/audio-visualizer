@@ -1,8 +1,8 @@
-import React, { useRef, useState, createContext } from "react";
-import { useFrame } from "@react-three/fiber";
-import { BackSide } from "three";
-import Rings from "../Rings";
-import Particles from "../Particles";
+import React, { useRef, useState, createContext } from 'react';
+import { useFrame } from '@react-three/fiber';
+import { BackSide } from 'three';
+import Rings from '../Rings';
+import Particles from '../Particles';
 
 const makeRings = (num) => {
   const rings = [];

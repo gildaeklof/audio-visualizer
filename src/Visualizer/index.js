@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import Background from "../Rings/Background/index";
-import Background2 from "../Spheres/Background2";
-import Background4 from "../Lines/Background4";
-// import { Post } from "../Post/index";
+import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import Background from '../Rings/Background/index';
+import Background2 from '../Spheres/Background2';
+import Background4 from '../Lines/Background4';
+import { Post } from '../Post/index';
 
 function nearestPow2(aSize) {
   return Math.pow(2, Math.ceil(Math.log(aSize) / Math.log(2)));
@@ -17,8 +17,8 @@ const Visualizer = () => {
     playedAt: 0,
   });
   const [num, setNum] = useState(16);
-  const [track, setTrack] = useState("disco");
-  const [background, setBackground] = useState("rings");
+  const [track, setTrack] = useState('disco');
+  const [background, setBackground] = useState('rings');
   const audioContext = useRef(
     new (window.AudioContext || window.webkitAudioContext)()
   );
@@ -31,7 +31,7 @@ const Visualizer = () => {
   }, [num]);
 
   useEffect(() => {
-    fetch(track + ".mp3").then((res) => {
+    fetch(track + '.mp3').then((res) => {
       res.arrayBuffer().then((value) => {
         audioContext.current.decodeAudioData(value).then((audioBuffer) => {
           currentBuffer.current = audioBuffer;
@@ -72,7 +72,7 @@ const Visualizer = () => {
   return (
     <>
       <button className="controls" onClick={() => setVisible(!visible)}>
-        {visible ? "Hide controls" : "Show controls"}
+        {visible ? 'Hide controls' : 'Show controls'}
       </button>
       {visible && (
         <header>
@@ -127,9 +127,9 @@ const Visualizer = () => {
             <option value="disco" defaultChecked>
               Disco
             </option>
-            <option value="riviere">Riviere</option>
             <option value="orchid">Orchid</option>
             <option value="cover">Cover</option>
+            <option value="riviere">Riviere</option>
           </select>
           <select
             onChange={(e) => {
@@ -152,8 +152,8 @@ const Visualizer = () => {
             <option value="rings" defaultChecked>
               Rings
             </option>
-            <option value="spheres">Spheres</option>
             <option value="lines">Lines</option>
+            <option value="spheres">Spheres</option>
           </select>
         </header>
       )}
@@ -162,11 +162,11 @@ const Visualizer = () => {
         pixelRatio={window.devicePixelRatio}
         invalidateFrameloop={false}
         style={{
-          position: "absolute",
-          left: "0",
-          top: "0",
-          width: "100%",
-          height: "100%",
+          position: 'absolute',
+          left: '0',
+          top: '0',
+          width: '100%',
+          height: '100%',
         }}
         camera={{ position: [0, 0, 10] }}
       >
@@ -179,7 +179,7 @@ const Visualizer = () => {
           lookAt={[4, 4, 4]}
           color={0xff0000}
         />
-        {background === "rings" && (
+        {background === 'rings' && (
           <>
             <OrbitControls maxDistance={80} />
             <Background
@@ -190,7 +190,7 @@ const Visualizer = () => {
             />
           </>
         )}
-        {background === "spheres" && (
+        {background === 'spheres' && (
           <>
             <OrbitControls
               maxDistance={80}
@@ -205,7 +205,7 @@ const Visualizer = () => {
             />
           </>
         )}
-        {background === "lines" && (
+        {background === 'lines' && (
           <>
             <OrbitControls maxDistance={80} />
             <Background4
@@ -216,7 +216,7 @@ const Visualizer = () => {
             />
           </>
         )}
-        {/* <Post /> */}
+        <Post />
       </Canvas>
     </>
   );

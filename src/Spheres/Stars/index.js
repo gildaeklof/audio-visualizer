@@ -1,7 +1,7 @@
-import React, { useRef, useMemo } from "react";
-import { useFrame } from "@react-three/fiber";
-import * as THREE from "three";
-import { Post } from "../../Rings/Post/index";
+import React, { useRef, useMemo } from 'react';
+import { useFrame } from '@react-three/fiber';
+import * as THREE from 'three';
+/* import { Post } from "../../Rings/Post/index"; */
 
 const Stars = () => {
   let group = useRef();
@@ -15,7 +15,7 @@ const Stars = () => {
   const [geo, mat, coords] = useMemo(() => {
     const geo = new THREE.SphereBufferGeometry(0.3, 15, 15);
     const mat = new THREE.MeshPhongMaterial({
-      color: new THREE.Color("gold"),
+      color: new THREE.Color('gold'),
     });
     const coords = new Array(200)
       .fill()
