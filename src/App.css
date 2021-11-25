@@ -9,17 +9,17 @@ body {
 }
 
 .controls {
-  position: absolute;
+  position: fixed;
   top: 20px;
-  right: 82%;
+  left: 75px;
   width: 150px;
   transform: translateX(-50%);
   z-index: 100;
 }
 header {
-  position: absolute;
+  position: fixed;
   top: 20px;
-  right: 19%;
+  left: 500px;
   transform: translateX(-50%);
   z-index: 100;
 }

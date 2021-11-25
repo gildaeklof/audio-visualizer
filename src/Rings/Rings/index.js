@@ -22,7 +22,7 @@ const Rings = ({ index }) => {
       />
       <MeshWobbleMaterial
         attach="material"
-        factor={0.6}
+        factor={height / 2}
         color={colorMap()}
         side={DoubleSide}
       />

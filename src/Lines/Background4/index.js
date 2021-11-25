@@ -1,7 +1,7 @@
-import React, { useRef, useState, createContext } from "react";
-import { useFrame } from "@react-three/fiber";
-import Lines from "../Lines";
-import { Stars } from "@react-three/drei";
+import React, { useRef, useState, createContext } from 'react';
+import { useFrame } from '@react-three/fiber';
+import Lines from '../Lines';
+import { Stars } from '@react-three/drei';
 
 const makeLines = (num) => {
   const lines = [];
@@ -11,11 +11,12 @@ const makeLines = (num) => {
   for (let i = 0; i < num; i++) {
     let x = 30 * Math.cos(angle);
     let y = 0 * Math.cos(angle);
+    let z = 0;
     let id = i > num / num ? i : num + i;
     lines.push(
       <Lines
         key={lines.length}
-        position={[x, y, 0]}
+        position={[x, y, z]}
         radius={0.5}
         angle={angle}
         index={id}

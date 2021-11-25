@@ -1,6 +1,6 @@
-import React, { useContext, useRef } from "react";
-import { DoubleSide } from "three";
-import { soundContext } from "../Background4/index";
+import React, { useContext, useRef } from 'react';
+import { DoubleSide } from 'three';
+import { soundContext } from '../Background4/index';
 
 const Lines = ({ position, index }) => {
   const height = useContext(soundContext)[index] / 30;
@@ -9,11 +9,7 @@ const Lines = ({ position, index }) => {
   return (
     <>
       <mesh position={position} ref={mesh}>
-        <boxBufferGeometry
-          attach="geometry"
-          args={[0.5, 4 * height, 0.5]}
-          ref={mesh}
-        />
+        <boxBufferGeometry attach="geometry" args={[0.5, 4 * height, 0.5]} />
         <meshPhongMaterial
           attach="material"
           color={`hsl(${height * 130}, 80%, 60%)`}
