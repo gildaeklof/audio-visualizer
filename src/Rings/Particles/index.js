@@ -1,14 +1,14 @@
-import React, { useContext, useRef } from 'react';
-import { soundContext } from '../Background/index';
+import React, { useContext, useRef } from "react";
+import { soundContext } from "../Background/index";
 
 const Particles = () => {
-  const height = useContext(soundContext)[5] / 100;
+  const height = useContext(soundContext)[15] / 90;
   const mesh = useRef();
   const colorMap = () => {
     let r, g, b;
-    r = parseInt((Math.sin(height - Math.PI) + 1) * 100);
-    g = parseInt((Math.sin(height - Math.PI - (4 * Math.PI) / 20) + 1) * 600);
-    b = parseInt((Math.sin(height - Math.PI - (2 * Math.PI) / 20) + 1) * 1280);
+    r = parseInt((Math.sin(height - Math.PI) + 1) * 900);
+    g = parseInt((Math.sin(height - Math.PI - (4 * Math.PI) / 25) + 1) * 200);
+    b = parseInt((Math.sin(height - Math.PI - (2 * Math.PI) / 25) + 1) * 400);
     return `rgb(${r}, ${g}, ${b})`;
   };
   return (
