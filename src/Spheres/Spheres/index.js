@@ -1,6 +1,6 @@
-import React, { useContext, useRef } from 'react';
-import { DoubleSide } from 'three';
-import { soundContext } from '../Background2/index';
+import React, { useContext, useRef } from "react";
+import { DoubleSide } from "three";
+import { soundContext } from "../Background2/index";
 
 const Spheres = ({ position, angle, index }) => {
   const height = useContext(soundContext)[index] / 100;
@@ -19,7 +19,7 @@ const Spheres = ({ position, angle, index }) => {
       <mesh position={position} ref={mesh}>
         <sphereBufferGeometry
           attach="geometry"
-          args={[0.5 + height / 5, 30, 30]}
+          args={[1.2 + height / 5, 30, 30]}
         />
         <meshPhongMaterial
           attach="material"

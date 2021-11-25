@@ -1,9 +1,9 @@
-import React, { useRef, useState, createContext } from 'react';
-import { useFrame } from '@react-three/fiber';
-import { BackSide } from 'three';
-import Spheres from '../Spheres';
-import Sphere from '../Sphere';
-import Stars from '../Stars';
+import React, { useRef, useState, createContext } from "react";
+import { useFrame } from "@react-three/fiber";
+import { BackSide } from "three";
+import Spheres from "../Spheres";
+import Sphere from "../Sphere";
+import Stars from "../Stars";
 
 const makeSpheres = (num) => {
   const spheres = [];
@@ -11,8 +11,8 @@ const makeSpheres = (num) => {
   let angle = Math.PI / 2;
 
   for (let i = 0; i < num; i++) {
-    let x = 8 * Math.cos(angle);
-    let y = 8 * Math.sin(angle);
+    let x = 12 * Math.cos(angle);
+    let y = 12 * Math.sin(angle);
 
     let id = i < num / num ? i : num - i;
     spheres.push(
