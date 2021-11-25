@@ -5,11 +5,11 @@ import { soundContext } from '../Background3/index';
 
 const LineY = () => {
   const height = useContext(soundContext)[10] / 50;
-  const ref = useRef();
-  useFrame(() => (ref.current.rotation.y += 0.003));
+  /* const ref = useRef();
+  useFrame(() => (ref.current.rotation.y += 0.003)); */
 
   return (
-    <mesh ref={ref} position={(0, 0, 0)} rotation={[29.9, 0, 0]}>
+    <mesh /* ref={ref} */ position={(0, 0, 0)} rotation={[29.9, 0, 0]}>
       <torusBufferGeometry args={[100, 0.3, 40, 4000]} />
       <MeshWobbleMaterial
         attach="material"
