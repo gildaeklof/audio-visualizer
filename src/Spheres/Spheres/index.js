@@ -24,7 +24,6 @@ const Spheres = ({ position, angle, index }) => {
         <meshPhongMaterial
           attach="material"
           color={colorMap()}
-          /* color={`hsl(${height * 128}, 80%, 60%)`} */
           side={DoubleSide}
         />
       </mesh>

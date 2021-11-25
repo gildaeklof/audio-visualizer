@@ -51,9 +51,8 @@ const Background2 = ({ num, analyser, player, play, ...rest }) => {
         side={BackSide}
       />
 
+      <Stars />
       <soundContext.Provider value={soundArray}>
-        {/* {makeStars()} */}
-        <Stars />
         {makeSpheres(num)}
         <Sphere />
       </soundContext.Provider>

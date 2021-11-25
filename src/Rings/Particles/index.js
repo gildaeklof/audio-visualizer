@@ -14,12 +14,7 @@ const Particles = () => {
   return (
     <mesh position={[0, 0, Math.tan(0, height)]} ref={mesh}>
       <sphereBufferGeometry attach="geometry" args={[100, 50, 500]} />
-      <meshPhysicalMaterial
-        attach="material"
-        /* color={`hsl(${height * 200}, 100%, 50%)`} */
-        color={colorMap()}
-        side={1}
-      />
+      <meshPhysicalMaterial attach="material" color={colorMap()} side={1} />
     </mesh>
   );
 };

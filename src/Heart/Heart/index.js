@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { soundContext } from '../Background3';
 
 const Heart = () => {
-  const height = useContext(soundContext)[10] / 80;
+  const height = useContext(soundContext)[14] / 100;
   const x = 0,
     y = 0;
 
@@ -18,7 +18,7 @@ const Heart = () => {
   heartShape.bezierCurveTo(x - 7, y, x - 5, y - 5, x - 5, y - 5);
 
   return (
-    <mesh position={[4, 7, Math.max(0, height * 5)]}>
+    <mesh position={[4, 7, Math.max(0, height * 2)]}>
       <extrudeBufferGeometry attach="geometry" args={[heartShape]} />
       <meshPhongMaterial
         attach="material"
