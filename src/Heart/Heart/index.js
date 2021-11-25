@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import * as THREE from "three";
-import { soundContext } from "../Background3";
+import React, { useContext } from 'react';
+import * as THREE from 'three';
+import { soundContext } from '../Background3';
 
 const Heart = () => {
-  const height = useContext(soundContext)[1] / 80;
+  const height = useContext(soundContext)[10] / 80;
   const x = 0,
     y = 0;
 

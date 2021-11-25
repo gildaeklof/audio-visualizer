@@ -19,7 +19,7 @@ body {
 header {
   position: absolute;
   top: 20px;
-  right: 34%;
+  right: 32%;
   transform: translateX(-50%);
   z-index: 100;
 }

@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import Background from "../Rings/Background/index";
-import Background2 from "../Spheres/Background2";
-import Background3 from "../Heart/Background3";
-import Background4 from "../Lines/Background4";
-import Background5 from "../Honeycomb/Background5";
-import { Post } from "../Post/index";
+import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import Background from '../Rings/Background/index';
+import Background2 from '../Spheres/Background2';
+import Background3 from '../Heart/Background3';
+import Background4 from '../Lines/Background4';
+import Background5 from '../Honeycomb/Background5';
+import { Post } from '../Post/index';
 
 function nearestPow2(aSize) {
   return Math.pow(2, Math.ceil(Math.log(aSize) / Math.log(2)));
@@ -19,8 +19,8 @@ const Visualizer = () => {
     playedAt: 0,
   });
   const [num, setNum] = useState(16);
-  const [track, setTrack] = useState("disco");
-  const [background, setBackground] = useState("rings");
+  const [track, setTrack] = useState('disco');
+  const [background, setBackground] = useState('rings');
   const audioContext = useRef(
     new (window.AudioContext || window.webkitAudioContext)()
   );
@@ -33,7 +33,7 @@ const Visualizer = () => {
   }, [num]);
 
   useEffect(() => {
-    fetch(track + ".mp3").then((res) => {
+    fetch(track + '.mp3').then((res) => {
       res.arrayBuffer().then((value) => {
         audioContext.current.decodeAudioData(value).then((audioBuffer) => {
           currentBuffer.current = audioBuffer;
@@ -74,7 +74,7 @@ const Visualizer = () => {
   return (
     <>
       <button className="controls" onClick={() => setVisible(!visible)}>
-        {visible ? "Hide controls" : "Show controls"}
+        {visible ? 'Hide controls' : 'Show controls'}
       </button>
       {visible && (
         <header>
@@ -166,13 +166,13 @@ const Visualizer = () => {
         pixelRatio={window.devicePixelRatio}
         invalidateFrameloop={false}
         style={{
-          position: "absolute",
-          left: "0",
-          top: "0",
-          width: "100%",
-          height: "100%",
+          position: 'absolute',
+          left: '0',
+          top: '0',
+          width: '100%',
+          height: '100%',
         }}
-        camera={{ position: [0, 0, 10] }}
+        camera={{ position: [0, 0, 40] }}
       >
         <ambientLight />
         <pointLight position={[0, 0, 20]} color={0xff0000} />
@@ -183,12 +183,12 @@ const Visualizer = () => {
           lookAt={[4, 4, 4]}
           color={0xff0000}
         />
-        {background === "rings" && (
+        {background === 'rings' && (
           <>
             <OrbitControls
               maxDistance={80}
-              /* autoRotate={true}
-              autoRotateSpeed={2} */
+              autoRotate={true}
+              autoRotateSpeed={2}
             />
             <Background
               num={num}
@@ -198,7 +198,7 @@ const Visualizer = () => {
             />
           </>
         )}
-        {background === "spheres" && (
+        {background === 'spheres' && (
           <>
             <OrbitControls
               maxDistance={80}
@@ -213,7 +213,7 @@ const Visualizer = () => {
             />
           </>
         )}
-        {background === "lines" && (
+        {background === 'lines' && (
           <>
             <OrbitControls
               maxDistance={80}
@@ -228,9 +228,13 @@ const Visualizer = () => {
             />
           </>
         )}
-        {background === "heart" && (
+        {background === 'heart' && (
           <>
-            <OrbitControls maxDistance={80} />
+            <OrbitControls
+              maxDistance={80}
+              autoRotate={true}
+              autoRotateSpeed={0.8}
+            />
             <Background3
               num={num}
               analyser={analyser.current}
@@ -239,7 +243,7 @@ const Visualizer = () => {
             />
           </>
         )}
-        {background === "honeycomb" && (
+        {background === 'honeycomb' && (
           <>
             <OrbitControls maxDistance={80} />
             <Background5
