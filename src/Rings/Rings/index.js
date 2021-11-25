@@ -15,7 +15,7 @@ const Rings = ({ index }) => {
     return `rgb(${r}, ${g}, ${b})`;
   };
   return (
-    <mesh position={[0, 0, Math.max(0, height)]} ref={mesh}>
+    <mesh position={[0, 0, 0]} ref={mesh}>
       <ringBufferGeometry
         attach="geometry"
         args={[index * 0.9 + 2.9, index * 0.9 + 3.1, 1000]}
