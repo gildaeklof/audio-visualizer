@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
-import * as THREE from "three";
-import { soundContext } from "../Background3";
+import React, { useContext } from 'react';
+import * as THREE from 'three';
+import { soundContext } from '../Background3';
+import { DoubleSide } from 'three';
+import { MeshWobbleMaterial } from '@react-three/drei';
 
-const Heart = () => {
-  const height = useContext(soundContext)[1] / 80;
+const Heart3 = () => {
+  const height = useContext(soundContext)[3] / 80;
   const x = 0,
     y = 0;
 
@@ -18,7 +20,7 @@ const Heart = () => {
   heartShape.bezierCurveTo(x - 7, y, x - 5, y - 5, x - 5, y - 5);
 
   return (
-    <mesh position={[4, 7, Math.max(0, height * 5)]}>
+    <mesh position={[-20, 7, Math.max(0, height * 5)]}>
       <extrudeBufferGeometry attach="geometry" args={[heartShape]} />
       <meshPhongMaterial
         attach="material"
@@ -28,4 +30,4 @@ const Heart = () => {
   );
 };
 
-export default Heart;
+export default Heart3;

@@ -185,7 +185,11 @@ const Visualizer = () => {
         />
         {background === "rings" && (
           <>
-            <OrbitControls maxDistance={80} />
+            <OrbitControls
+              maxDistance={80}
+              /* autoRotate={true}
+              autoRotateSpeed={2} */
+            />
             <Background
               num={num}
               analyser={analyser.current}
@@ -211,7 +215,11 @@ const Visualizer = () => {
         )}
         {background === "lines" && (
           <>
-            <OrbitControls maxDistance={80} />
+            <OrbitControls
+              maxDistance={80}
+              /* autoRotate={true}
+              autoRotateSpeed={0.8} */
+            />
             <Background4
               num={num}
               analyser={analyser.current}

@@ -1,8 +1,8 @@
 import React, { useContext, useRef } from 'react';
 import { soundContext } from '../Background/index';
 
-const Particles = ({ index }) => {
-  const height = useContext(soundContext)[index] / 100;
+const Particles = () => {
+  const height = useContext(soundContext)[5] / 100;
   const mesh = useRef();
   const colorMap = () => {
     let r, g, b;

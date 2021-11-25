@@ -12,16 +12,6 @@ const makeRings = (num) => {
   return rings;
 };
 
-const makeParticles = (num) => {
-  const particles = [];
-  for (let i = 10; i < num; i++) {
-    particles.push(
-      <Particles key={particles.length} index={particles.length} />
-    );
-  }
-  return particles;
-};
-
 export const soundContext = createContext();
 
 const Background = ({ num, analyser, player, play, ...rest }) => {
@@ -45,7 +35,7 @@ const Background = ({ num, analyser, player, play, ...rest }) => {
       />
       <soundContext.Provider value={soundArray}>
         {makeRings(num)}
-        {makeParticles(num)}
+        <Particles />
       </soundContext.Provider>
     </mesh>
   );

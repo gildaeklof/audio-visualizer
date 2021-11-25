@@ -4,7 +4,7 @@ import { DoubleSide } from 'three';
 import { MeshWobbleMaterial } from '@react-three/drei';
 
 const Rings = ({ index }) => {
-  const height = useContext(soundContext)[index] / 100;
+  const height = useContext(soundContext)[index] / 20;
   const mesh = useRef();
 
   const colorMap = () => {
@@ -18,12 +18,14 @@ const Rings = ({ index }) => {
     <mesh position={[0, 0, Math.max(0, height)]} ref={mesh}>
       <ringBufferGeometry
         attach="geometry"
-        args={[index * 0.3 + 1.3, index * 0.3 + 1.2, 1000]}
+        args={[index * 0.9 + 2.9, index * 0.9 + 3.1, 1000]}
+        /* args={[index * 0.3 + 1.3, index * 0.3 + 1.2, 300]} */
       />
       <MeshWobbleMaterial
         attach="material"
-        /* color={`hsl(${height * 128}, 60%, 60%)`} */
+        factor={0.6}
         color={colorMap()}
+        /* color={`hsl(${height * 20}, 50%, 50%)`} */
         side={DoubleSide}
       />
     </mesh>

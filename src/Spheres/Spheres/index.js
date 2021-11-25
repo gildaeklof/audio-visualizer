@@ -19,7 +19,7 @@ const Spheres = ({ position, angle, index }) => {
       <mesh position={position} ref={mesh}>
         <sphereBufferGeometry
           attach="geometry"
-          args={[0.5 + height / 10, 30, 30]}
+          args={[0.5 + height / 5, 30, 30]}
         />
         <meshPhongMaterial
           attach="material"

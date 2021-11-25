@@ -2,7 +2,7 @@ import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-const Stars = () => {
+const Hearts = () => {
   let group = useRef();
   let theta = 10;
   useFrame(() => {
@@ -12,11 +12,21 @@ const Stars = () => {
     group.current.scale.set(s, s, s);
   });
   const [geo, mat, coords] = useMemo(() => {
-    const geo = new THREE.SphereBufferGeometry(0.3, 0, 0);
-    const mat = new THREE.MeshPhongMaterial({
-      color: new THREE.Color('gold'),
-    });
-    const coords = new Array(200)
+    const x = 0,
+      y = 0;
+
+    const heartShape = new THREE.Shape();
+
+    heartShape.moveTo(x - 5, y - 5);
+    heartShape.bezierCurveTo(x - 5, y - 5, x - 4, y, x, y);
+    heartShape.bezierCurveTo(x + 6, y, x + 6, y - 7, x + 6, y - 7);
+    heartShape.bezierCurveTo(x + 6, y - 11, x + 3, y - 15.4, x - 5, y - 19);
+    heartShape.bezierCurveTo(x - 12, y - 15.4, x - 16, y - 11, x - 16, y - 7);
+    heartShape.bezierCurveTo(x - 16, y - 7, x - 16, y, x - 10, y);
+    heartShape.bezierCurveTo(x - 7, y, x - 5, y - 5, x - 5, y - 5);
+    const geo = new THREE.ShapeGeometry(heartShape);
+    const mat = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const coords = new Array(20)
       .fill()
       .map(() => [
         Math.random() * 150 - 100,
@@ -34,4 +44,4 @@ const Stars = () => {
   );
 };
 
-export default Stars;
+export default Hearts;

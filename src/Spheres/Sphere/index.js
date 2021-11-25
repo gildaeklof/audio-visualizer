@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { soundContext } from '../Background2/index';
 
 const Sphere = () => {
-  const height = useContext(soundContext)[10] / 300;
+  const height = useContext(soundContext)[7] / 300;
   return (
     <mesh position={[0, 0, 0]}>
       <sphereBufferGeometry
