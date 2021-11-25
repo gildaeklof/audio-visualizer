@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import * as THREE from "three";
-import { soundContext } from "../Background3";
+import React, { useContext } from 'react';
+import * as THREE from 'three';
+import { soundContext } from '../Background3';
 
 const Heart = () => {
   const height = useContext(soundContext)[14] / 100;
@@ -22,7 +22,8 @@ const Heart = () => {
       <extrudeBufferGeometry attach="geometry" args={[heartShape]} />
       <meshPhongMaterial
         attach="material"
-        color={`hsl(${height * 10}, 100%, 55%)`}
+        /* color={`hsl(${height * 10}, 100%, 55%)`} */
+        color="brown"
       />
     </mesh>
   );
