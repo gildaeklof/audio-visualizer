@@ -2,6 +2,8 @@ import React, { useRef, useState, createContext } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Sky } from '@react-three/drei';
 import Heart from '../Heart';
+import LineX from '../LineX';
+import LineY from '../LineY';
 import LineZ from '../LineZ';
 
 export const soundContext = createContext();
@@ -27,6 +29,8 @@ const Background3 = ({ num, analyser, player, play, ...rest }) => {
       />
       <soundContext.Provider value={soundArray}>
         <Heart />
+        <LineX />
+        <LineY />
         <LineZ />
       </soundContext.Provider>
     </mesh>
