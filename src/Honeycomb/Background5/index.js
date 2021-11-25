@@ -3,7 +3,6 @@ import { useFrame } from '@react-three/fiber';
 import Hexagon from '../Hexagon';
 import LineX from '../LineX';
 import LineY from '../LineY';
-import LineZ from '../LineZ';
 
 export const soundContext = createContext();
 
@@ -23,7 +22,6 @@ const Background5 = ({ num, analyser, player, play, ...rest }) => {
       <soundContext.Provider value={soundArray}>
         <LineX />
         <LineY />
-        <LineZ />
         <group>
           <group position={[0, 0, 0]}>
             <Hexagon />

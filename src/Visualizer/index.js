@@ -21,6 +21,7 @@ const Visualizer = () => {
   const [num, setNum] = useState(16);
   const [track, setTrack] = useState('disco');
   const [background, setBackground] = useState('rings');
+
   const audioContext = useRef(
     new (window.AudioContext || window.webkitAudioContext)()
   );
@@ -70,6 +71,7 @@ const Visualizer = () => {
   }, []);
 
   const [visible, setVisible] = useState(true);
+  const [orbit, setOrbit] = useState(false);
 
   return (
     <>
@@ -111,13 +113,13 @@ const Visualizer = () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
+              width="16"
+              height="16"
               fill="currentColor"
-              className="bi bi-pause"
-              viewBox="2 1 12 12"
+              class="bi bi-stop"
+              viewBox="0 0 16 16"
             >
-              <path d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z" />
+              <path d="M3.5 5A1.5 1.5 0 0 1 5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5zM5 4.5a.5.5 0 0 0-.5.5v6a.5.5 0 0 0 .5.5h6a.5.5 0 0 0 .5-.5V5a.5.5 0 0 0-.5-.5H5z" />
             </svg>
           </button>
 
@@ -159,6 +161,9 @@ const Visualizer = () => {
             <option value="heart">Heart</option>
             <option value="honeycomb">Honeycomb</option>
           </select>
+          <button onClick={() => setOrbit(!orbit)}>
+            {orbit ? 'Orbit off' : 'Orbit on'}
+          </button>
         </header>
       )}
 
@@ -184,76 +189,49 @@ const Visualizer = () => {
           color={0xff0000}
         />
         {background === 'rings' && (
-          <>
-            <OrbitControls
-              maxDistance={80}
-              autoRotate={true}
-              autoRotateSpeed={2}
-            />
-            <Background
-              num={num}
-              analyser={analyser.current}
-              player={playerOptions}
-              play={play}
-            />
-          </>
+          <Background
+            num={num}
+            analyser={analyser.current}
+            player={playerOptions}
+            play={play}
+          />
         )}
         {background === 'spheres' && (
-          <>
-            <OrbitControls
-              maxDistance={80}
-              autoRotate={true}
-              autoRotateSpeed={0.7}
-            />
-            <Background2
-              num={num}
-              analyser={analyser.current}
-              player={playerOptions}
-              play={play}
-            />
-          </>
+          <Background2
+            num={num}
+            analyser={analyser.current}
+            player={playerOptions}
+            play={play}
+          />
         )}
         {background === 'lines' && (
-          <>
-            <OrbitControls
-              maxDistance={80}
-              /* autoRotate={true}
-              autoRotateSpeed={0.8} */
-            />
-            <Background4
-              num={num}
-              analyser={analyser.current}
-              player={playerOptions}
-              play={play}
-            />
-          </>
+          <Background4
+            num={num}
+            analyser={analyser.current}
+            player={playerOptions}
+            play={play}
+          />
         )}
         {background === 'heart' && (
-          <>
-            <OrbitControls
-              maxDistance={80}
-              autoRotate={true}
-              autoRotateSpeed={0.8}
-            />
-            <Background3
-              num={num}
-              analyser={analyser.current}
-              player={playerOptions}
-              play={play}
-            />
-          </>
+          <Background3
+            num={num}
+            analyser={analyser.current}
+            player={playerOptions}
+            play={play}
+          />
         )}
         {background === 'honeycomb' && (
-          <>
-            <OrbitControls maxDistance={80} />
-            <Background5
-              num={num}
-              analyser={analyser.current}
-              player={playerOptions}
-              play={play}
-            />
-          </>
+          <Background5
+            num={num}
+            analyser={analyser.current}
+            player={playerOptions}
+            play={play}
+          />
         )}
+        {orbit ? (
+          <OrbitControls autoRotate={true} autoRotateSpeed={0.7} />
+        ) : null}
+        <OrbitControls maxDistance={80} />
         <Post />
       </Canvas>
     </>
