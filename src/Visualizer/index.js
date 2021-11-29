@@ -19,7 +19,7 @@ const Visualizer = () => {
     playedAt: 0,
   });
   const [num, setNum] = useState(16);
-  const [track, setTrack] = useState('disco');
+  const [track, setTrack] = useState('sunset');
   const [background, setBackground] = useState('rings');
 
   const audioContext = useRef(
@@ -128,22 +128,20 @@ const Visualizer = () => {
               setTrack(e.target.value);
             }}
           >
-            <option value="disco" defaultChecked>
-              Disco
+            <option value="sunset" defaultChecked>
+              Sunset
             </option>
+            <option value="disco">Disco</option>
             <option value="night">Night</option>
             <option value="riviere">Riviere</option>
             <option value="myself">Myself</option>
-            <option value="sunset">Sunset</option>
           </select>
           <select
             onChange={(e) => {
               setNum(e.target.value);
             }}
           >
-            <option value={16} defaultChecked>
-              16
-            </option>
+            <option value={16}>16</option>
             <option value={20}>20</option>
             <option value={24}>24</option>
             <option value={28}>28</option>

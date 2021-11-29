@@ -1,5 +1,5 @@
-import React, { useContext, useRef } from "react";
-import { soundContext } from "../Background/index";
+import React, { useContext, useRef } from 'react';
+import { soundContext } from '../Background/index';
 
 const Particles = () => {
   const height = useContext(soundContext)[15] / 90;
